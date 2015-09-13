@@ -1,4 +1,4 @@
-# WarsawJS Presentation: Template
+# WarsawJS Presentation: My 10 days with Phaser.js
 
 ![Logo](/pictures/logo.png)
 
