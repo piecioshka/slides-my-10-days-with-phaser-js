@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="themes/warsawjs/styles/ribbon-theme.css">
     <link rel="stylesheet" href="themes/warsawjs/styles/warsawjs-theme.css">
+    <link rel="stylesheet" href="themes/warsawjs/styles/social-slide.css">
+    <link rel="stylesheet" href="themes/warsawjs/styles/custom.css">
 </head>
 <body class="list">
     <header class="caption">
@@ -43,32 +45,485 @@
 
     <section class="slide">
         <div>
-            <h2>Plain Text on Your Slides</h2>
+            <h2>Who am I?</h2>
 
-            <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt
-                ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco
-                laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in
-                reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.
+            <h3 itemprop="jobTitle">Kierownik Działu Aplikacji Webowych</h3>
+
+            <p>
+                <span itemprop="affiliation">Cyfrowy Polsat</span>,
+                <span itemprop="location">Warsaw</span>
             </p>
+
+            <p>
+                <span itemprop="knows">JavaScript Ninja. Mac lover. Pebble evangelist.</span><br />
+                <span>Organizator <a href="http://warsawjs.com/" itemprop="memberOf">WarsawJS</a></span><br />
+            </p>
+
+            <p class="note">"Kto chce szuka sposobu, kto nie chce szuka powodu."</p>
+        </div>
+    </section>
+
+    <section class="slide social-slide">
+        <div>
+            <h2>Where am I?</h2>
+
+            <figure>
+                <a href="http://piecioshka.pl/blog/">
+                    <img src="pictures/social/blog-icon.jpg" alt="Blog"/>
+                    <span>piecioshka.pl/blog</span>
+                </a>
+            </figure>
+
+            <figure>
+                <a href="http://github.com/piecioshka">
+                    <img src="pictures/social/github-icon.png" alt="GitHub"/>
+                    <span>github.com/piecioshka</span>
+                </a>
+            </figure>
+
+            <figure>
+                <a href="http://twitter.com/piecioshka">
+                    <img src="pictures/social/twitter-icon.png" alt="Twitter"/>
+                    <span>twitter.com/piecioshka</span>
+                </a>
+            </figure>
+
+            <figure>
+                <a href="http://soundcloud.com/piecioshka">
+                    <img src="pictures/social/soundcloud-icon.png" alt="Soundcloud"/>
+                    <span>soundcloud.com/piecioshka</span>
+                </a>
+            </figure>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2>I created the <strong>game</strong>.</h2>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2 style="font-size: 100px">
+                <a href="http://www.dragonballplay.com">dragonballplay.com</a>
+            </h2>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>All Kind of Lists</h2>
-            <ol>
-                <li>Simple lists are marked with bullets</li>
-                <li>Ordered lists begin with a number</li>
-                <li>You can even nest lists one inside another
-                    <ul>
-                        <li>Or mix their types</li>
-                        <li>But do not go too far</li>
-                        <li>Otherwise audience will be bored</li>
-                    </ul>
-                </li>
-                <li>Look, seven rows exactly!</li>
-            </ol>
+            <h2>Dzień I: Od czego zaczynamy?</h2>
+
+            <p class="note">31&uarr;</p>
+
+            - scripts/ - piszemy w ES6, aby kompilować do ES5 (dla przeglądarek) to trzeba skorzystać z <em>webpacka</em> i <em>Babel.js</em>
+                - załączamy prosty <em>webpack.config.js</em>
+                    - od tego momentu możemy pisać w ECMAScript 6!
+                - zalety ES6:
+                    - zamknięte moduły - żadnym globalnych zmiennych
+                    - importowanie tylko tego czego w danym pliku wymagamy (zapożyczenie z innych języków)
+                    - piękna składnia klas i modułów
+                    - „szybkie” dziedziczenie
+                    - destructuring assignment
+                    - domyślne parametry
+                    - arrow function
+                - włączamy ES7 stage 0
+                    - <em>webpack.config.js</em>: loader: 'babel?stage=0’ i mamy właściwości w klasach
+            - index.html - więcej html-a nie będzie, bo wszystko jest w Canvas
+                - tworzymy kontener w którym gra się wyrenderuje
+                - dodajemy plik biblioteki:
+                - Phaser.js
+                    - 2.8M phaser.js
+                    - 726K phaser.min.js
+                - Wystarczy, do naszej gry
+                    - 2,2M phaser-arcade-physics.js
+                    - 754K phaser-arcade-physics.map
+                    - 567K phaser-arcade-physics.min.js
+                - Za mało
+                    - 1,5M phaser-minimum.js
+                    - 477K phaser-minimum.map
+                    - 365K phaser-minimum.min.js
+                - Potrzebujemy fizyki
+                    - 2,0M phaser-no-physics.js
+                - 659K phaser-no-physics.map
+                - 503K phaser-no-physics.min.js
+                - dodajemy 1 plik JS: dist/bundle.js
+            - dlaczego nie w modułach?
+                - Rzuca błędem: <strong>"PIXI is not defined"</strong>
+                - <em>webpack</em> będzie miał tak duży plik do doklejania, czy jest to nam na prawdę potrzebne?
+            - tworzymy obiekt gry
+                - jeden na całą grę
+                - jest dostępny z poziomy każdego stanu
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/1.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień II: Grafika </h2>
+
+            <p class="note">157 LOC (126&uarr;)</p>
+
+            - stworzenie stanu: MenuState
+                - this.game.state.add(name, handler)
+                - this.game.state.start(name)
+            - wszystko co nie jest kodem w jednym katalogu: assets (graphics, sound, maps)
+            - prezentujemy pierwsze tło w grze - zwykły obrazek o wymiarach gry i w punkcie 0,0
+                - this.load.image(key, path)
+                - this.add.image(x, y, key)
+            - dodajemy przyciski
+                - this.add.button(x, y, key, handler)
+            - katalog scripts/models/ z postaciami występującymi w grze, np. Son Goku, Vegeta
+            - dodanie stanów: FightState, SearchingState
+            - konfiguracja gry w osobnym pliku scripts/configuration.js
+            - współdzielenie obiektów między stanami
+                - zmienne globalne?
+                - właściwości obiektu gry
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/2.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień III: Poruszamy się</h2>
+
+            <p class="note">258 LOC (101&uarr;)</p>
+
+            - stworzenie map z programem Tiled - świetny program do robienia Map do gier
+                - this.load.tilemap(key, jsonpath, data, format)
+                    - data - jeśli jest jsonpath to nie data = null
+                    - format: Phaser.Tilemap.TILED_JSON
+                - do mapy dodajemy tileset (nasz spritesheet)
+                    - this.laod.spritesheet(key, path, tileWidth, tileHeight)
+                - tworzymy warstwę na mapie i rozszerzamy ją na cały świat - czyli obszar gry
+            - definicja położenia smoczych kul w oddzielnych plikach
+                - po co? aby np. backend mógł generować takie układy
+                - aby oddzielić konfigurację od logiki biznesowej
+            - tworzenie pierwszego sprite-a
+            - ładowanie plików JSON this.laod.json(key, path)
+            - dodajemy naszą postać
+                - this.add.sprite(x, y, key)
+            - metoda update
+                - Phaser.Game#raf via requestAnimationFrame albo setTimeout
+                - 38881: The core game loop - method: Phaser.Game#update
+            - prosty komunikat
+                - this.add.text(x, y, text)
+            - dodajemy smocze kule
+                - tworzymy na ich potrzebę grupę, aby można było łatwo tworzyć kolizje
+            - nawigacja
+                - if (keyboard.isDown(Phaser.Keyboard.LEFT) { player.x -= 5; }
+                - ważne, że aby była kolizja gracza z czymkolwiek, to musimy operować jego prędkością a nie tylko pozycją
+                - musimy player.velocity.x -= 5
+                - trzeba tym samym czyścić przy każdej iteracji game loopa player.body.velocity.x = 0;
+            - kolizje
+                - temat rzeka
+                - player
+                    - this.physics.arcade.enable(player)
+                    - włączamy arcadowy tryb dla naszego zawodnika
+                - mapa
+                    - map.setCollisionByIndex(1) - numerowanie o 1 ;/
+                - layer = map.createLayer(name)
+                    - this.physics.arcade.collide(player, layer)
+                - od teraz player będzie kolidować z tilem o indeksie 0
+            - smocze kule
+                - grupa musi mieć ciało
+                    - balls = this.add.group()
+                    - balls.enableBody = true;
+                    - this.physics.arcade.enable(balls);
+                    - this.physics.arcade.collide(player, balls, (player, ball) => {})
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/3.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień IV: Czas z zegara</h2>
+
+            <p class="note">384 LOC (126&uarr;)</p>
+
+            - zegary
+                - this.time.events.add(second, hander, context) - zegarek przywiązany do stanu
+            - animacje: fadeIn
+                - message.alpha = 0;
+                - this.add.tween(message).to({ alpha: 1 }, lifetime, type, true);
+                    - lifetime: Phaser.Timer.SECOND
+                    - type: Phaser.Easing.Linear.None
+            - stworzenie zegara countdown
+                - odmierzamy czas do GameOver
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/4a.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/4b.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/4c.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/4d.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień V: Muzyko graj!</h2>
+
+            <p class="note">710 LOC (326&uarr;)</p>
+
+            - dodajemy logo i muzykę
+                - this.load.audio(key, path)
+                - sound = this.add.audio(key)
+                - sound.play()
+            - tworzymy przeciwników w walce
+            - powiększenie hitboxów podczas wykonywania uderzeń
+            - tworzymy MealState - ekran odpoczynku, podczas którego HP będzie regenerowane
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/5.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień VI: Pokazujemy paski</h2>
+
+            <p class="note">858 LOC (148&uarr;)</p>
+
+            - prezentacja labelek i avatarów zawodników w FightState
+            - możliwość wyłączania globalnie dźwięków w aplikacji zapisywana w localStorage
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/6.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień VII: Kolizje zawodników</h2>
+
+            <p class="note">1028 LOC (170&uarr;)</p>
+
+            - wspieramy ruch myszki podczas wybierania postaci
+                - button.events.onInputOver.add(hadnler, context)
+            - weryfikacja czy zawodnicy się zderzyli
+                - isOverlap() => this.physics.arcade.overlap(player, enemy)
+            - usuwamy życie dla wroga wtedy kiedy player do uderzy
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/7a.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/7b.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/7c.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/7d.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień VIII: Początki sztucznej inteligencji</h2>
+
+            <p class="note">1270 LOC (242&uarr;)</p>
+
+            - tworzymy ekran, który prezentuje tylko komunikat
+            - zmiana nazwy FightState na VersusState - lepiej obrazuje jaki to ekran
+            - FightState jest klasą z której dziedziczy VersusState oraz TrainingState - dzięki temu usuwamy wiele zduplikowanego kodu
+            - zaczynamy wspierać pseudo „sztuczną inteligencję” - wykonujemy wrogiem ten sam styl walki
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/8a.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/8b.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/8c.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/8d.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień IX: Easter egg</h2>
+
+            <p class="note">1533 LOC (263&uarr;)</p>
+
+            poprawienie „sztucznej inteligencji” - losowanie z listy ruchów, tym samym przeciwnik jest nie przewidywalny
+            stworzenie Utilities - worek z funkcjami
+            stworzenie ekranu z wyborem języka
+            przeniesienie wszystkich tekstów do oddzielnych plików z tłumaczeniami (JSON)
+            this.load.josn(key, path)
+            this.cache.getJSON(key)
+            stworzenie DefinitionTyped.js
+            przewrócenie początkowych wartości gracza po GameOver
+            stworzenie easter egg-a: nowa postać do wyboru Piccolo - kto po wie jaki jest skrót na włączenie go podczas gry dostanie koszulkę!
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/9a.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/9b.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/9c.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dzień X: Ostatni dzień wyzwania</h2>
+
+            <p class="note">1732 LOC (199&uarr;)</p>
+
+            - losujemy 1 mapkę z 3 możliwych, podczas zbierania smoczych kul
+            - zmiana nazwy SearchingState na CollectingState
+            - zmniejszamy spritesheeta do 2x2 kafelków
+            - dodajemy kolizję z dwom kafelkami 1 i 3
+                - map.setCollision([1, 3]);
+            - konwersja wszystkich obrazków na PNG
+                - dlaczego się nie opłaca robić tego przy tłach gry?
+            - dodanie obrazka pojawiania się smoka do ShenronState
+            - stworzenie stanów: PlayerPresentationState, EnemyPresentationState, WinnerState
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10a.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10b.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10c.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10d.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10e.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10f.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10g.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10h.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10i.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10j.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <img src="pictures/screenshots/10k.jpg" alt="">
         </div>
     </section>
 
@@ -76,14 +531,146 @@
         <div>
             <h2>JavaScript Samples</h2>
             <pre>
-                <code><mark class="comment">// Crockford style IIFE</mark></code>
-                <code>(function () {</code>
-                <code>  var <mark>someVar</mark> = 'value';</code>
-                <code>  console.<mark class="important">log</mark>(someVar);</code>
-                <code>}());</code>
+                <code><mark class="comment">comment</mark></code>
+                <code><mark>simple</mark></code>
+                <code><mark class="important">important</mark></code>
             </pre>
         </div>
     </section>
+
+    <section class="slide">
+        <div>
+            <h2>Przyszłość</h2>
+
+            <ul style="font-size: 22px;">
+                <li>develop: blokować zachowanie zawodnika kiedy przegrał</li>
+                <li>develop: licznik czasu na treningu</li>
+                <li>develop: prezentować wersję gry drobnym druczkiem</li>
+                <li>develop: dłuższe prezentowanie tekstów</li>
+                <li>develop: blokowanie postaci, aby nie wchodziły na siebie, ani nie przesuwały</li>
+                <li>develop: skróty klawiaturowe w walce</li>
+                <li>develop: poprawić obsługę "Konami code"</li>
+                <li>develop: dodać wsparcie Gamepad API</li>
+                <li>develop: wykorzystać Notification API</li>
+                <li>design: narysować postacie, stworzyć favicon</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <div>
+            <h2>Zalety biblioteki</h2>
+
+            - bardzo duża społeczność
+            - bardzo dużo linijek kodu? tak, dużo komentarzy (JSDoc)
+            - wszystkie składniki dobrze wykonane
+            - w API widać dużą odseparowanie warstw, np. state i keyboard
+            - super dokumentacja
+            - mnóstwo przykładów
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Wady</h2>
+
+            - nie znalazłem, może ktoś na sali zna?
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Idea stanów</h2>
+
+            - definicja stanu to klasa 4 metodami: prelaod, create, update, render dodatkowo może być też przydatny init
+            - jeden stan jest aktywny
+            - fabuła gry polega na przełączaniu się stanów, np. wybór języka, menu wyboru postaci/opcji, docelowa rozgrywka, ekran porażki lub zwycięstwa
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Najgorszy kawałek kodu</h2>
+
+            - callback hell: VersusState.es6.js:113
+            - MenuState.es6.js:81
+            - ShenronState.es6.js:33
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Najlepszy kawałek kodu?</h2>
+
+            - współdzielenie obiektu gracza między stanami: MenuState.es6.js:65
+            - kolizje: CollectingState.es6.js:128
+            - wybór języka: LanguageState.es6.js
+            - main.es6.js
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Moje wnioski, czyli czego się nauczyłem</h2>
+
+            - grafika zostawiamy na koniec, szkoda czas marnować kiedy czas jest ważny
+            - obsługa klawiszy nie musi być wcale w metodzie update danego state-a
+            - każdy stan ma swój zegar, który zostaje zniszczony kiedy stan zostaje zniszczony
+            - brakowało mi managera do trzymania fabuły gry, dlatego postanowiłem, że kupię 3 książki nt. Phaser.js
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Moje niedopatrzenia</h2>
+
+            <ul>
+                <li>
+                    w state: this.rnd.integerInRange(min, max) zamiast Utilities.random(min, max)
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2 style="font-size: 70px">
+                <span style="font-size: 80px">Donation</span><br /><br />
+                <a href="https://www.patreon.com/photonstorm">patreon.com/photonstorm</a><br /><br />
+                <span style="font-size: 50px">(Richard Davey @photonstorm)</span>
+            </h2>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2>Thanks!</h2>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Links</h2>
+
+            <ul style="font-size: 20px">
+                <li>Phaser.js: <a href="http://phaser.io/">http://phaser.io</a></li>
+                <li>Slides: <a href="http://piecioshka.github.io/warsawjs-presentation-my-10-days-with-phaser-js/">http://piecioshka.github.io/warsawjs-presentation-my-10-days-with-phaser-js</a></li>
+                <li>My games:
+                    <ul>
+                        <li><a href="https://github.com/piecioshka/game-snooker">https://github.com/piecioshka/game-snooker</a></li>
+                        <li><a href="https://github.com/piecioshka/game-electrode">https://github.com/piecioshka/game-electrode</a></li>
+                        <li><a href="https://github.com/piecioshka/www.dragonballplay.com">https://github.com/piecioshka/www.dragonballplay.com</a></li>
+                    </ul>
+                </li>
+
+                <li>ECMAScript 7: <a href="https://babeljs.io/docs/usage/experimental/">https://babeljs.io/docs/usage/experimental</a></li>
+                <li>Special editor: <a href="http://phasereditor.boniatillo.com/">http://phasereditor.boniatillo.com</a></li>
+                <li>Font: <a href="http://www.dafont.com/saiyan-sans.font">http://www.dafont.com/saiyan-sans.font</a></li>
+            </ul>
+        </div>
+    </section>
+
     <section class="slide">
         <div>
             <h2>Even Tables</h2>
@@ -120,12 +707,6 @@
                 </tr>
             </table>
             <p>It’s good to have information organized.</p>
-        </div>
-    </section>
-
-    <section class="slide cover">
-        <div>
-            <img src="pictures/bigphoto.jpg" alt="">
         </div>
     </section>
 
