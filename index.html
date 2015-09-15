@@ -118,7 +118,7 @@
             <ul>
                 <li>state definition - class with 4 methods: <mark>preload</mark>, <mark>create</mark>, <mark>update</mark>, <mark>render</mark> and optionally <mark>init</mark></li>
                 <li>only one state is active</li>
-                <li>gameplay of the game is to switch to state, ex. choose lang, select character form menu, fight, defeat or win screen</li>
+                <li>gameplay of the game is to switch to state, e.g. choose lang, select character form menu, fight, defeat or win</li>
             </ul>
         </div>
     </section>
@@ -128,7 +128,7 @@
             <h2><mark>init</mark> method</h2>
 
             <ul>
-                <li>uruchamia się gdy stan zostanie aktywowany - jako pierwsza metoda</li>
+                <li>it runs as the first method</li>
             </ul>
         </div>
     </section>
@@ -138,7 +138,7 @@
             <h2><mark>preload</mark> method</h2>
 
             <ul>
-                <li>metoda w której ściągamy assety (pliki json, pliki z ścieżkami dźwiękowymi)</li>
+                <li>method which downloads the assets - sounds and json files</li>
             </ul>
         </div>
     </section>
@@ -148,8 +148,8 @@
             <h2><mark>create</mark> method</h2>
 
             <ul>
-                <li>uruchamiana raz podczas tworzenie stanu</li>
-                <li>w niej tworzymy wszystkie obiektu występujące w tym stanie gry</li>
+                <li>runs ones while generating the state</li>
+                <li>there we create all objects occurring in this game state</li>
             </ul>
         </div>
     </section>
@@ -159,8 +159,8 @@
             <h2><mark>update</mark> method</h2>
 
             <ul>
-                <li><mark>Phaser.Game#raf</mark> via requestAnimationFrame albo setTimeout</li>
-                <li>38881: The core game loop - method: <mark>Phaser.Game#update</mark></li>
+                <li><mark>Phaser.Game#raf</mark> via <mark>requestAnimationFrame</mark> or <mark>setTimeout</mark></li>
+                <li>38881: The core game loop - method <mark>Phaser.Game#update</mark></li>
             </ul>
         </div>
     </section>
@@ -170,9 +170,8 @@
             <h2><mark>render</mark> method</h2>
 
             <ul>
-                <li>metoda która uruchamia się po cały procesie aktualizacji obiektów w Canvas</li>
-                <li>w niej możemy włączyć prezentację technicznych detali naszych obiektów</li>
-                <li>wykonuje się zawsze po metodzie <mark>update</mark></li>
+                <li>method runs after update process </li>
+                <li>inside it we can enable displaying debug details</li>
             </ul>
         </div>
     </section>
@@ -185,7 +184,7 @@
 
             <blockquote style="font-size: 40px">
                 Use ECMAScript 6.<br/>
-                <mark>webpack</mark> i <mark>Babel.js</mark> take care for compiling to ECMAScript 5 (for browser).
+                <mark>webpack</mark> and <mark>Babel.js</mark> take care of compiling to ECMAScript 5 (for browser).
             </blockquote>
         </div>
     </section>
@@ -339,7 +338,7 @@
             <h2>Day II: Design (vol. 2)</h2>
 
             <ul style="font-size: 30px">
-                <li><mark>assets</mark> - directory contains everything exclude code,<br/>ex. <mark>graphics</mark>, <mark>sound</mark></li>
+                <li><mark>assets</mark> - directory contains everything exclude code,<br/>e.g. <mark>graphics</mark>, <mark>sound</mark></li>
                 <li>display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
             </ul>
 
@@ -357,7 +356,7 @@
             <h2>Day II: Design (vol. 3)</h2>
 
             <ul style="font-size: 26px">
-                <li><mark>scripts/models/</mark> directory with characters definition, ex. Son Goku</li>
+                <li><mark>scripts/models/</mark> directory with characters definition, e.g. Son Goku</li>
                 <li>add states: <mark>FightState</mark>, <mark>SearchingState</mark> (screen with collected balls)</li>
                 <li><mark>scripts/configuration.js</mark> - file in isolated game configuration</li>
                 <li>create instance of player class</li>
@@ -368,7 +367,7 @@
 
             <pre class="listing">
                 <code>this.add.button(x, y, key, handler)</code>
-                <code><mark class="comment">// ex. this.add.button(10, 20, 'btn-ico', () => {})</mark></code>
+                <code><mark class="comment">// e.g. this.add.button(10, 20, 'btn-ico', () => {})</mark></code>
             </pre>
         </div>
     </section>
@@ -949,7 +948,7 @@
                 <li>big community</li>
                 <li>a lot of lines of code (a lot of JSDocs)</li>
                 <li>good quality of code (components)</li>
-                <li>separation of layers in API, ex. states and keyboards</li>
+                <li>separation of layers in API, e.g. states and keyboards</li>
                 <li>cool <a href="http://phaser.io/docs/">phaser.io/docs</a></li>
                 <li>a lot of <a href="http://phaser.io/examples/">phaser.io/examples</a></li>
             </ul>
