@@ -1,3 +1,32 @@
 .slide > div {
     padding-top: 50px;
 }
+
+.slide p.note {
+    margin-bottom: 10px;
+}
+
+.slide pre {
+    margin-bottom: 10px;
+}
+
+.slide pre.listing {
+    font-size: 28px;
+}
+
+.slide pre.listing code {
+    line-height: 32px;
+}
+
+.slide ul {
+    margin-bottom: 10px;
+}
+
+.slide strong.peace {
+    color: #1ce62b;
+}
+
+.slide mark.feature {
+    background-color: #2380e6;
+    color: #fff;
+}

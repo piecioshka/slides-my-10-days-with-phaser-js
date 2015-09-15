@@ -56,7 +56,7 @@
 
             <p>
                 <span itemprop="knows">JavaScript Ninja. Mac lover. Pebble evangelist.</span><br />
-                <span>Organizator <a href="http://warsawjs.com/" itemprop="memberOf">WarsawJS</a></span><br />
+                <span>Organizer <a href="http://warsawjs.com/" itemprop="memberOf">WarsawJS</a></span><br />
             </p>
 
             <p class="note">"Kto chce szuka sposobu, kto nie chce szuka powodu."</p>
@@ -113,48 +113,199 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień I: Od czego zaczynamy?</h2>
+            <h2>State idea</h2>
+
+            <ul>
+                <li>state definition - class with 4 methods: <mark>preload</mark>, <mark>create</mark>, <mark>update</mark>, <mark>render</mark> and optionally <mark>init</mark></li>
+                <li>only one state is active</li>
+                <li>gameplay of the game is to switch to state, ex. choose lang, select character form menu, fight, defeat or win screen</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2><mark>init</mark> method</h2>
+
+            <ul>
+                <li>uruchamia się gdy stan zostanie aktywowany - jako pierwsza metoda</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2><mark>preload</mark> method</h2>
+
+            <ul>
+                <li>metoda w której ściągamy assety (pliki json, pliki z ścieżkami dźwiękowymi)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2><mark>create</mark> method</h2>
+
+            <ul>
+                <li>uruchamiana raz podczas tworzenie stanu</li>
+                <li>w niej tworzymy wszystkie obiektu występujące w tym stanie gry</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2><mark>update</mark> method</h2>
+
+            <ul>
+                <li><mark>Phaser.Game#raf</mark> via requestAnimationFrame albo setTimeout</li>
+                <li>38881: The core game loop - method: <mark>Phaser.Game#update</mark></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2><mark>render</mark> method</h2>
+
+            <ul>
+                <li>metoda która uruchamia się po cały procesie aktualizacji obiektów w Canvas</li>
+                <li>w niej możemy włączyć prezentację technicznych detali naszych obiektów</li>
+                <li>wykonuje się zawsze po metodzie <mark>update</mark></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Day I: Where do we start?</h2>
 
             <p class="note">31&uarr;</p>
 
-            - scripts/ - piszemy w ES6, aby kompilować do ES5 (dla przeglądarek) to trzeba skorzystać z <em>webpacka</em> i <em>Babel.js</em>
-                - załączamy prosty <em>webpack.config.js</em>
-                    - od tego momentu możemy pisać w ECMAScript 6!
-                - zalety ES6:
-                    - zamknięte moduły - żadnym globalnych zmiennych
-                    - importowanie tylko tego czego w danym pliku wymagamy (zapożyczenie z innych języków)
-                    - piękna składnia klas i modułów
-                    - „szybkie” dziedziczenie
-                    - destructuring assignment
-                    - domyślne parametry
-                    - arrow function
-                - włączamy ES7 stage 0
-                    - <em>webpack.config.js</em>: loader: 'babel?stage=0’ i mamy właściwości w klasach
-            - index.html - więcej html-a nie będzie, bo wszystko jest w Canvas
-                - tworzymy kontener w którym gra się wyrenderuje
-                - dodajemy plik biblioteki:
-                - Phaser.js
-                    - 2.8M phaser.js
-                    - 726K phaser.min.js
-                - Wystarczy, do naszej gry
-                    - 2,2M phaser-arcade-physics.js
-                    - 754K phaser-arcade-physics.map
-                    - 567K phaser-arcade-physics.min.js
-                - Za mało
-                    - 1,5M phaser-minimum.js
-                    - 477K phaser-minimum.map
-                    - 365K phaser-minimum.min.js
-                - Potrzebujemy fizyki
-                    - 2,0M phaser-no-physics.js
-                - 659K phaser-no-physics.map
-                - 503K phaser-no-physics.min.js
-                - dodajemy 1 plik JS: dist/bundle.js
-            - dlaczego nie w modułach?
-                - Rzuca błędem: <strong>"PIXI is not defined"</strong>
-                - <em>webpack</em> będzie miał tak duży plik do doklejania, czy jest to nam na prawdę potrzebne?
-            - tworzymy obiekt gry
-                - jeden na całą grę
-                - jest dostępny z poziomy każdego stanu
+            <blockquote style="font-size: 40px">
+                Use ECMAScript 6.<br />
+                <mark>webpack</mark> i <mark>Babel.js</mark> take care for compiling to ECMAScript 5 (for browser).
+            </blockquote>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>webpack.config.js</h2>
+
+            <pre class="listing">
+                <code>module.exports = {</code>
+                <code>    resolve: { extensions: <mark class="important">['.es6.js', '.js', '']</mark> },</code>
+                <code>    <mark>entry</mark>: './app/scripts/main',</code>
+                <code>    <mark>output</mark>: {</code>
+                <code>        filename: 'bundle.js',</code>
+                <code>        path: './app/dist'</code>
+                <code>    },</code>
+                <code>    module: {</code>
+                <code>        loaders: [{</code>
+                <code>            test: <mark class="important">/\.es6\.js/</mark>,</code>
+                <code>            exclude: <mark>/node_modules/</mark>,</code>
+                <code>            loader: 'babel?<mark class="feature">stage=0</mark>'</code>
+                <code>        }]</code>
+                <code>    }</code>
+                <code>};</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Advantages of ECMAScript 6</h2>
+
+            <ul style="font-size: 30px">
+                <li><mark>modules</mark> - no global variables</li>
+                <li><mark>importing</mark> - require only dependency</li>
+                <li>smooth syntax of <mark>class</mark> definition</li>
+                <li>"simple" <mark>inheritance</mark></li>
+                <li><mark>default parameters</mark></li>
+                <li><mark>arrow function</mark></li>
+                <li><mark>destructuring assignment</mark></li>
+            </ul>
+
+            <pre style="font-size: 20px; position: absolute; left: 550px; top: 490px;" class="listing">
+                <code><mark class="feature">var [x, y] = ['abc', 100]</mark></code>
+                <code><mark class="comment">// x = 'abc', y = 100</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>HTML (index.html)</h2>
+
+            <p class="note">No more HTML files, because everything is in the Canvas.</p>
+
+            <br/>
+
+            <ol style="font-size: 30px">
+                <li>Create container for game: <mark>&lt;div id="game"&gt;&lt;/div&gt;</mark></li>
+                <li>Add library file: <mark>scripts/vendor/phaser.js</mark></li>
+                <li>Add our game file: <mark>dist/bundle.js</mark></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Phaser.js v2.4.3</h2>
+
+            <table style="font-size: 30px">
+                <tr>
+                    <th scope="col">Type</th>
+                    <th>Files</th>
+                </tr>
+                <tr>
+                    <td scope="row">Normal</td>
+                    <td>
+                        <mark>2.8M</mark> <strong>phaser.js</strong><hr/>
+                        726K phaser.min.js
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">Only need to</td>
+                    <td>
+                        2,2M phaser-arcade-physics.js<hr/>
+                        754K phaser-arcade-physics.map<br />
+                        <mark>567K</mark> <strong class="peace">phaser-arcade-physics.min.js</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Why not in modules?</h2>
+
+            <ul style="font-size: 36px">
+                <li>Throw an error: <strong>"PIXI is not defined"</strong></li>
+                <li><mark>webpack</mark> will has big file to manage
+                    <ul>
+                        <li>We really need it?</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Write first lines of code</h2>
+
+            <ol style="font-size: 40px">
+                <li>Create game object
+                    <ul>
+                        <li>one for all game</li>
+                        <li>available from each of game state</li>
+                    </ul>
+                </li>
+            </ol>
         </div>
     </section>
 
@@ -166,25 +317,79 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień II: Grafika </h2>
+            <h2>Day II: Design (vol. 1)</h2>
 
             <p class="note">157 LOC (126&uarr;)</p>
 
-            - stworzenie stanu: MenuState
-                - this.game.state.add(name, handler)
-                - this.game.state.start(name)
-            - wszystko co nie jest kodem w jednym katalogu: assets (graphics, sound, maps)
-            - prezentujemy pierwsze tło w grze - zwykły obrazek o wymiarach gry i w punkcie 0,0
-                - this.load.image(key, path)
-                - this.add.image(x, y, key)
-            - dodajemy przyciski
-                - this.add.button(x, y, key, handler)
-            - katalog scripts/models/ z postaciami występującymi w grze, np. Son Goku, Vegeta
-            - dodanie stanów: FightState, SearchingState
-            - konfiguracja gry w osobnym pliku scripts/configuration.js
-            - współdzielenie obiektów między stanami
-                - zmienne globalne?
-                - właściwości obiektu gry
+            <ul>
+                <li>add states: <mark>MenuState</mark> - select character</li>
+            </ul>
+
+            <br/>
+
+            <pre class="listing">
+                <code>this.game.state.add(name, handler)</code>
+                <code>this.game.state.start(name)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Day II: Design (vol. 2)</h2>
+
+            <ul style="font-size: 30px">
+                <li><mark>assets</mark> - directory contains everything exclude code,<br />ex. <mark>graphics</mark>, <mark>sound</mark></li>
+                <li>display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
+            </ul>
+
+            <br/>
+
+            <pre class="listing">
+                <code>this.load.image(key, path)</code>
+                <code>this.add.image(x, y, key)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Day II: Design (vol. 3)</h2>
+
+            <ul style="font-size: 26px">
+                <li><mark>scripts/models/</mark> directory with characters definition, ex. Son Goku</li>
+                <li>add states: <mark>FightState</mark>, <mark>SearchingState</mark> (screen with collected balls)</li>
+                <li><mark>scripts/configuration.js</mark> - file in isolated game configuration</li>
+                <li>create instance of player class</li>
+                <li>add some buttons</li>
+            </ul>
+
+            <br/>
+
+            <pre class="listing">
+                <code>this.add.button(x, y, key, handler)</code>
+                <code><mark class="comment">// ex. this.add.button(10, 20, 'btn-ico', () => {})</mark></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>First big problem</h2>
+
+            <ul>
+                <li>sharing objects between states?</li>
+            </ul>
+
+            <br/>
+
+            <h2>Ideas?</h2>
+
+            <ul>
+                <li>global variables?</li>
+                <li><strong>never!</strong></li>
+                <li>create custom game properties!</li>
+            </ul>
         </div>
     </section>
 
@@ -196,54 +401,121 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień III: Poruszamy się</h2>
+            <h2>Day III: We are moving!</h2>
 
             <p class="note">258 LOC (101&uarr;)</p>
 
-            - stworzenie map z programem Tiled - świetny program do robienia Map do gier
-                - this.load.tilemap(key, jsonpath, data, format)
-                    - data - jeśli jest jsonpath to nie data = null
-                    - format: Phaser.Tilemap.TILED_JSON
-                - do mapy dodajemy tileset (nasz spritesheet)
-                    - this.laod.spritesheet(key, path, tileWidth, tileHeight)
-                - tworzymy warstwę na mapie i rozszerzamy ją na cały świat - czyli obszar gry
-            - definicja położenia smoczych kul w oddzielnych plikach
-                - po co? aby np. backend mógł generować takie układy
-                - aby oddzielić konfigurację od logiki biznesowej
-            - tworzenie pierwszego sprite-a
-            - ładowanie plików JSON this.laod.json(key, path)
-            - dodajemy naszą postać
-                - this.add.sprite(x, y, key)
-            - metoda update
-                - Phaser.Game#raf via requestAnimationFrame albo setTimeout
-                - 38881: The core game loop - method: Phaser.Game#update
-            - prosty komunikat
-                - this.add.text(x, y, text)
-            - dodajemy smocze kule
-                - tworzymy na ich potrzebę grupę, aby można było łatwo tworzyć kolizje
-            - nawigacja
-                - if (keyboard.isDown(Phaser.Keyboard.LEFT) { player.x -= 5; }
-                - ważne, że aby była kolizja gracza z czymkolwiek, to musimy operować jego prędkością a nie tylko pozycją
-                - musimy player.velocity.x -= 5
-                - trzeba tym samym czyścić przy każdej iteracji game loopa player.body.velocity.x = 0;
-            - kolizje
-                - temat rzeka
-                - player
-                    - this.physics.arcade.enable(player)
-                    - włączamy arcadowy tryb dla naszego zawodnika
-                - mapa
-                    - map.setCollisionByIndex(1) - numerowanie o 1 ;/
-                - layer = map.createLayer(name)
-                    - this.physics.arcade.collide(player, layer)
-                - od teraz player będzie kolidować z tilem o indeksie 0
-            - smocze kule
-                - grupa musi mieć ciało
-                    - balls = this.add.group()
-                    - balls.enableBody = true;
-                    - this.physics.arcade.enable(balls);
-                    - this.physics.arcade.collide(player, balls, (player, ball) => {})
+            <ul>
+                <li>create map with <mark class="feature">Tiled</mark> - cool tool for create game maps</li>
+            </ul>
+
+            <pre class="listing">
+                <code>this.load.tilemap(key, path, data, format)</code>
+                <code><mark class="comment">// data - jeśli jest path to nie data = null</mark></code>
+                <code><mark class="comment">// format - Phaser.Tilemap.TILED_JSON</mark></code>
+            </pre>
+
+            <ul>
+                <li>add <mark>tileset</mark> to map (our spritesheet)</li>
+            </ul>
+
+            <pre class="listing">
+                <code>this.load.spritesheet(key, path, width, height)</code>
+                <code><mark class="comment">// width - tile width</mark></code>
+                <code><mark class="comment">// height - tile height</mark></code>
+            </pre>
+
+            <ul>
+                <li>create layer on map and extend it on whole game area</li>
+            </ul>
         </div>
     </section>
+
+    <section class="slide">
+        <div>
+            <h2>Dragon ball positions</h2>
+
+            <ul>
+                <li>definition of positions dragon balls in separate files, for what?
+                    <ul>
+                        <li>for backend can generate that files</li>
+                        <li>for separate configuration from business logic</li>
+                    </ul>
+                </li>
+                <li>create first sprite</li>
+                <li>loading JSON file</li>
+            </ul>
+
+            <pre class="listing">
+                <code>this.load.json(key, path)</code>
+                <code>object = this.cache.getJSON(key)</code>
+            </pre>
+
+            <ul>
+                <li>add character sprite</li>
+            </ul>
+
+            <pre>
+                <code>this.add.sprite(x, y, key)</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Simple message</h2>
+
+            <pre>
+                <code>this.add.text(x, y, text)</code>
+            </pre>
+
+            <h2>dodajemy smocze kule</h2>
+
+            <p>Tworzymy na ich potrzebę grupę, aby można było łatwo tworzyć kolizje</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Nawigacja</h2>
+
+            <ul>
+                <li>if (keyboard.isDown(Phaser.Keyboard.LEFT) { player.x -= 5; }</li>
+                <li>ważne, że aby była kolizja gracza z czymkolwiek, to musimy operować jego prędkością a nie tylko pozycją</li>
+                <li>musimy player.velocity.x -= 5</li>
+                <li>trzeba tym samym czyścić przy każdej iteracji game loopa player.body.velocity.x = 0;</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Kolizje - temat rzeka</h2>
+
+            - player
+                - // włączamy arcade mode dla naszego zawodnika
+                - this.physics.arcade.enable(player)
+            - mapa
+                - map.setCollisionByIndex(1) // numerowanie o 1
+                - layer = map.createLayer(name)
+                - this.physics.arcade.collide(player, layer)
+                - od teraz player będzie kolidować z kafelkiem o indeksie 0
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Zbieranie elementów - smoczych kul</h2>
+
+            - grupa musi mieć ciało
+                - balls = this.add.group()
+                - balls.enableBody = true;
+            - grupa musi mieć zdefiniowaną fizykę
+                - this.physics.arcade.enable(balls);
+                - this.physics.arcade.collide(player, balls, (player, ball) => {})
+        </div>
+    </section>
+
 
     <section class="slide cover">
         <div>
@@ -253,7 +525,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień IV: Czas z zegara</h2>
+            <h2>Day IV: Czas z zegara</h2>
 
             <p class="note">384 LOC (126&uarr;)</p>
 
@@ -295,7 +567,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień V: Muzyko graj!</h2>
+            <h2>Day V: Muzyko graj!</h2>
 
             <p class="note">710 LOC (326&uarr;)</p>
 
@@ -317,7 +589,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień VI: Pokazujemy paski</h2>
+            <h2>Day VI: Pokazujemy paski</h2>
 
             <p class="note">858 LOC (148&uarr;)</p>
 
@@ -334,7 +606,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień VII: Kolizje zawodników</h2>
+            <h2>Day VII: Kolizje zawodników</h2>
 
             <p class="note">1028 LOC (170&uarr;)</p>
 
@@ -372,7 +644,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień VIII: Początki sztucznej inteligencji</h2>
+            <h2>Day VIII: Początki sztucznej inteligencji</h2>
 
             <p class="note">1270 LOC (242&uarr;)</p>
 
@@ -409,19 +681,17 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień IX: Easter egg</h2>
+            <h2>Day IX: Easter egg</h2>
 
             <p class="note">1533 LOC (263&uarr;)</p>
 
-            poprawienie „sztucznej inteligencji” - losowanie z listy ruchów, tym samym przeciwnik jest nie przewidywalny
-            stworzenie Utilities - worek z funkcjami
-            stworzenie ekranu z wyborem języka
-            przeniesienie wszystkich tekstów do oddzielnych plików z tłumaczeniami (JSON)
-            this.load.josn(key, path)
-            this.cache.getJSON(key)
-            stworzenie DefinitionTyped.js
-            przewrócenie początkowych wartości gracza po GameOver
-            stworzenie easter egg-a: nowa postać do wyboru Piccolo - kto po wie jaki jest skrót na włączenie go podczas gry dostanie koszulkę!
+            - poprawienie „sztucznej inteligencji” - losowanie z listy ruchów, tym samym przeciwnik jest nie przewidywalny
+            - stworzenie Utilities - worek z funkcjami
+            - stworzenie ekranu z wyborem języka
+            - przeniesienie wszystkich tekstów do oddzielnych plików z tłumaczeniami (JSON)
+            - stworzenie DefinitionTyped.js
+            - przewrócenie początkowych wartości gracza po GameOver
+            - stworzenie easter egg-a: nowa postać do wyboru Piccolo - kto po wie jaki jest skrót na włączenie go podczas gry dostanie koszulkę!
         </div>
     </section>
 
@@ -445,7 +715,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dzień X: Ostatni dzień wyzwania</h2>
+            <h2>Day X: Ostatni dzień wyzwania</h2>
 
             <p class="note">1732 LOC (199&uarr;)</p>
 
@@ -529,17 +799,6 @@
 
     <section class="slide">
         <div>
-            <h2>JavaScript Samples</h2>
-            <pre>
-                <code><mark class="comment">comment</mark></code>
-                <code><mark>simple</mark></code>
-                <code><mark class="important">important</mark></code>
-            </pre>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div>
             <h2>Przyszłość</h2>
 
             <ul style="font-size: 22px;">
@@ -562,12 +821,14 @@
         <div>
             <h2>Zalety biblioteki</h2>
 
-            - bardzo duża społeczność
-            - bardzo dużo linijek kodu? tak, dużo komentarzy (JSDoc)
-            - wszystkie składniki dobrze wykonane
-            - w API widać dużą odseparowanie warstw, np. state i keyboard
-            - super dokumentacja
-            - mnóstwo przykładów
+            <ul>
+                <li>bardzo duża społeczność</li>
+                <li>bardzo dużo linijek kodu? tak, dużo komentarzy (JSDoc)</li>
+                <li>wszystkie składniki dobrze wykonane</li>
+                <li>w API widać dużą odseparowanie warstw, np. state i keyboard</li>
+                <li>super dokumentacja</li>
+                <li>mnóstwo przykładów</li>
+            </ul>
         </div>
     </section>
 
@@ -575,17 +836,9 @@
         <div>
             <h2>Wady</h2>
 
-            - nie znalazłem, może ktoś na sali zna?
-        </div>
-    </section>
-
-    <section class="slide">
-        <div>
-            <h2>Idea stanów</h2>
-
-            - definicja stanu to klasa 4 metodami: prelaod, create, update, render dodatkowo może być też przydatny init
-            - jeden stan jest aktywny
-            - fabuła gry polega na przełączaniu się stanów, np. wybór języka, menu wyboru postaci/opcji, docelowa rozgrywka, ekran porażki lub zwycięstwa
+            <ul>
+                <li>nie znalazłem, może ktoś na sali zna?</li>
+            </ul>
         </div>
     </section>
 
@@ -593,9 +846,11 @@
         <div>
             <h2>Najgorszy kawałek kodu</h2>
 
-            - callback hell: VersusState.es6.js:113
-            - MenuState.es6.js:81
-            - ShenronState.es6.js:33
+            <ul>
+                <li>callback hell: VersusState.es6.js:113</li>
+                <li>MenuState.es6.js:81</li>
+                <li>ShenronState.es6.js:33</li>
+            </ul>
         </div>
     </section>
 
@@ -603,10 +858,12 @@
         <div>
             <h2>Najlepszy kawałek kodu?</h2>
 
-            - współdzielenie obiektu gracza między stanami: MenuState.es6.js:65
-            - kolizje: CollectingState.es6.js:128
-            - wybór języka: LanguageState.es6.js
-            - main.es6.js
+            <ul>
+                <li>współdzielenie obiektu gracza między stanami: MenuState.es6.js:65</li>
+                <li>kolizje: CollectingState.es6.js:128</li>
+                <li>wybór języka: LanguageState.es6.js</li>
+                <li>main.es6.js</li>
+            </ul>
         </div>
     </section>
 
@@ -614,10 +871,12 @@
         <div>
             <h2>Moje wnioski, czyli czego się nauczyłem</h2>
 
-            - grafika zostawiamy na koniec, szkoda czas marnować kiedy czas jest ważny
-            - obsługa klawiszy nie musi być wcale w metodzie update danego state-a
-            - każdy stan ma swój zegar, który zostaje zniszczony kiedy stan zostaje zniszczony
-            - brakowało mi managera do trzymania fabuły gry, dlatego postanowiłem, że kupię 3 książki nt. Phaser.js
+            <ul>
+                <li>grafika zostawiamy na koniec, szkoda czas marnować kiedy czas jest ważny</li>
+                <li>obsługa klawiszy nie musi być wcale w metodzie update danego state-a</li>
+                <li>każdy stan ma swój zegar, który zostaje zniszczony kiedy stan zostaje zniszczony</li>
+                <li>brakowało mi managera do trzymania fabuły gry, dlatego postanowiłem, że kupię 3 książki nt. Phaser.js</li>
+            </ul>
         </div>
     </section>
 
@@ -627,7 +886,7 @@
 
             <ul>
                 <li>
-                    w state: this.rnd.integerInRange(min, max) zamiast Utilities.random(min, max)
+                    <mark>Phaser.State#rnd.integerInRange(min, max)</mark> instead of <mark>Utilities.random(min, max)</mark>
                 </li>
             </ul>
         </div>
@@ -668,45 +927,6 @@
                 <li>Special editor: <a href="http://phasereditor.boniatillo.com/">http://phasereditor.boniatillo.com</a></li>
                 <li>Font: <a href="http://www.dafont.com/saiyan-sans.font">http://www.dafont.com/saiyan-sans.font</a></li>
             </ul>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div>
-            <h2>Even Tables</h2>
-            <table>
-                <tr>
-                    <th scope="col">Locavore</th>
-                    <th>Umami</th>
-                    <th>Helvetica</th>
-                    <th>Vegan</th>
-                </tr>
-                <tr>
-                    <th scope="row">Fingerstache</th>
-                    <td>Kale</td>
-                    <td>Chips</td>
-                    <td>Keytar</td>
-                </tr>
-                <tr>
-                    <th scope="row">Sriracha</th>
-                    <td>Gluten-free</td>
-                    <td>Ennui</td>
-                    <td>Keffiyeh</td>
-                </tr>
-                <tr>
-                    <th scope="row">Thundercats</th>
-                    <td>Jean</td>
-                    <td>Shorts</td>
-                    <td>Biodiesel</td>
-                </tr>
-                <tr>
-                    <th scope="row">Terry</th>
-                    <td>Richardson</td>
-                    <td>Swag</td>
-                    <td>Blog</td>
-                </tr>
-            </table>
-            <p>It’s good to have information organized.</p>
         </div>
     </section>
 
