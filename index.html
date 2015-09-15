@@ -425,7 +425,7 @@
             </pre>
 
             <ul>
-                <li>create layer on map and extend it on whole game area</li>
+                <li>create layer on map and extend it to the whole game area</li>
             </ul>
         </div>
     </section>
@@ -435,10 +435,10 @@
             <h2>Balls positions</h2>
 
             <ul>
-                <li>definition of positions dragon balls in separate files, for what?
+                <li>definition of positions dragon balls in separate files, for why?
                     <ul>
-                        <li>for backend can generate that files</li>
-                        <li>for separate configuration from business logic</li>
+                        <li>backend can generate that files</li>
+                        <li>separate configuration from business logic</li>
                     </ul>
                 </li>
                 <li>loading JSON file</li>
@@ -516,7 +516,7 @@
 
             <h2>Warning!</h2>
 
-            <p>If we would like use collision detection,<br/>we should update <mark class="feature">player.velocity.x</mark> not only <mark>player.x</mark>.</p>
+            <p>If we would like to use collision detection,<br/>we should update <mark class="feature">player.velocity.x</mark> not only <mark>player.x</mark>.</p>
         </div>
     </section>
 
@@ -531,7 +531,7 @@
 
             <br/>
 
-            <p>Before that process we should clear velocity!.</p>
+            <p>Before that process we should clear velocity!</p>
 
             <pre class="listing">
                 <code><mark class="comment">// reset velocity</mark></code>
@@ -549,7 +549,7 @@
             </ul>
 
             <pre>
-                <code><mark class="comment">// włączamy arcade mode dla naszego zawodnika</mark></code>
+                <code><mark class="comment">// enable arcade mode for our player</mark></code>
                 <code><mark>this.physics.arcade.enable(player)</mark></code>
             </pre>
 
@@ -572,7 +572,7 @@
             <h2>Collecting item - dragon balls</h2>
 
             <ul>
-                <li>group of balls should has a <mark>body</mark></li>
+                <li>group of balls should have a <mark>body</mark></li>
             </ul>
 
             <pre class="listing">
@@ -585,7 +585,7 @@
             <br/>
 
             <ul>
-                <li>group should has defined a <mark>physics</mark></li>
+                <li>group should have defined a <mark>physics</mark></li>
             </ul>
 
             <pre class="listing">
@@ -654,7 +654,7 @@
             <p class="note">710 LOC (326&uarr;)</p>
 
             <ul>
-                <li>create fakes spritesheets for characters</li>
+                <li>create fake spritesheets for characters</li>
                 <li>add logo and sound</li>
             </ul>
 
@@ -686,8 +686,8 @@
 
             <ul>
                 <li>display player labels (HP and EXP) and avatars on <mark>FightState</mark></li>
-                <li>disable globally sound (saved state in <mark>localStorage</mark>)</li>
-                <li>add everywhere we can logo <mark class="feature">DragonBallPlayer</mark></li>
+                <li>disable sound globally (saved state in <mark>localStorage</mark>)</li>
+                <li>add everywhere we can <mark class="feature">DragonBallPlayer</mark> logo</li>
             </ul>
         </div>
     </section>
@@ -724,7 +724,7 @@
             </pre>
 
             <ul>
-                <li>decrease HP of enemy when player hit him</li>
+                <li>decrease HP of enemy when player hits him</li>
             </ul>
         </div>
     </section>
@@ -805,7 +805,7 @@
                 <li>create state: <mark>LanguageState</mark></li>
                 <li>detach all text to isolated JSON files</li>
                 <li>create <mark>DefinitionTyped.js</mark></li>
-                <li>revert default parameters of player on <mark>GameOverState</mark></li>
+                <li>revert default player parameters on <mark>GameOverState</mark></li>
                 <li>create <mark class="feature">Easter Egg</mark>: new character available on <mark>MenuState</mark></li>
             </ul>
         </div>
@@ -848,7 +848,7 @@
             </pre>
 
             <ul>
-                <li>converting all images to PNG - why is bad idea for backgrounds?</li>
+                <li>converting all images to PNG - why is it a bad idea for backgrounds?</li>
                 <li>create states: PlayerPresentationState, EnemyPresentationState, WinnerState</li>
             </ul>
         </div>
@@ -925,10 +925,10 @@
             <h2>Future plans</h2>
 
             <ul style="font-size: 22px">
-                <li>block player when someone die on <mark>VersusState</mark></li>
+                <li>block player when someone dies on <mark>VersusState</mark></li>
                 <li>add countdown on <mark>TrainingState</mark></li>
                 <li>display app version somewhere with small font size</li>
-                <li>add some seconds when display <mark>MessageState</mark></li>
+                <li>extend display time for <mark>MessageState</mark></li>
                 <li>fixed players collision, that they can't enter on themselves</li>
                 <li>support shortcuts</li>
                 <li>fixed <mark>Konami code</mark></li>
@@ -997,8 +997,8 @@
 
             <ul>
                 <li>draw something when you are ready with implementation</li>
-                <li>keyboard handler doesn't have to in <mark>update</mark> method</li>
-                <li>each of state has his own clock, which is destroy when state is destroy</li>
+                <li>keyboard handler doesn't have to be in <mark>update</mark> method</li>
+                <li>each of state has his own clock, which is destroyed when state is destroyed</li>
             </ul>
         </div>
     </section>
@@ -1022,7 +1022,7 @@
             </pre>
 
             <ul>
-                <li>I missed the manager to keep the storyline, so I decided to... <br/>buy couple books about <mark>Phaser.js</mark></li>
+                <li>I missed the manager to keep the storyline, so I decided to... <br/>buy a couple of books about <mark>Phaser.js</mark></li>
             </ul>
         </div>
     </section>
