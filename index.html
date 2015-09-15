@@ -43,7 +43,7 @@
         </div>
     </section>
 
-    <section class="slide">
+    <section class="slide" itemscope itemtype="http://data-vocabulary.org/Person">
         <div>
             <h2>Who am I?</h2>
 
@@ -115,7 +115,7 @@
         <div>
             <h2>State idea</h2>
 
-            <ul>
+            <ul style="font-size: 36px">
                 <li>state definition - class with 4 methods: <mark>preload</mark>, <mark>create</mark>, <mark>update</mark>, <mark>render</mark> and optionally <mark>init</mark></li>
                 <li>only one state is active</li>
                 <li>gameplay of the game is to switch to state, e.g. choose lang, select character form menu, fight, defeat or win</li>
@@ -127,7 +127,7 @@
         <div>
             <h2><mark>init</mark> method</h2>
 
-            <ul>
+            <ul style="font-size: 40px">
                 <li>it runs as the first method</li>
             </ul>
         </div>
@@ -137,7 +137,7 @@
         <div>
             <h2><mark>preload</mark> method</h2>
 
-            <ul>
+            <ul style="font-size: 40px">
                 <li>method which downloads the assets - sounds and json files</li>
             </ul>
         </div>
@@ -147,7 +147,7 @@
         <div>
             <h2><mark>create</mark> method</h2>
 
-            <ul>
+            <ul style="font-size: 40px">
                 <li>runs ones while generating the state</li>
                 <li>there we create all objects occurring in this game state</li>
             </ul>
@@ -158,7 +158,7 @@
         <div>
             <h2><mark>update</mark> method</h2>
 
-            <ul>
+            <ul style="font-size: 40px">
                 <li><mark>Phaser.Game#raf</mark> via <mark>requestAnimationFrame</mark> or <mark>setTimeout</mark></li>
                 <li>38881: The core game loop - method <mark>Phaser.Game#update</mark></li>
             </ul>
@@ -169,7 +169,7 @@
         <div>
             <h2><mark>render</mark> method</h2>
 
-            <ul>
+            <ul style="font-size: 40px">
                 <li>method runs after update process </li>
                 <li>inside it we can enable displaying debug details</li>
             </ul>
@@ -284,7 +284,7 @@
 
             <ul style="font-size: 36px">
                 <li>Throw an error: <strong>"PIXI is not defined"</strong></li>
-                <li><mark>webpack</mark> will has big file to manage
+                <li><mark>webpack</mark> will have big file to manage
                     <ul>
                         <li>We really need it?</li>
                     </ul>
@@ -297,14 +297,14 @@
         <div>
             <h2>Write first lines of code</h2>
 
-            <ol style="font-size: 40px">
+            <ul style="font-size: 40px">
                 <li>Create game object
                     <ul>
                         <li>one for all game</li>
                         <li>available from each of game state</li>
                     </ul>
                 </li>
-            </ol>
+            </ul>
         </div>
     </section>
 
@@ -338,7 +338,7 @@
             <h2>Day II: Design (vol. 2)</h2>
 
             <ul style="font-size: 30px">
-                <li><mark>assets</mark> - directory contains everything exclude code,<br/>e.g. <mark>graphics</mark>, <mark>sound</mark></li>
+                <li><mark>assets</mark> - directory contains everything except code,<br/>e.g. <mark>graphics</mark>, <mark>sound</mark></li>
                 <li>display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
             </ul>
 
@@ -929,7 +929,7 @@
                 <li>add countdown on <mark>TrainingState</mark></li>
                 <li>display app version somewhere with small font size</li>
                 <li>add some seconds when display <mark>MessageState</mark></li>
-                <li>fixed players collision, that they can't enter on themself</li>
+                <li>fixed players collision, that they can't enter on themselves</li>
                 <li>support shortcuts</li>
                 <li>fixed <mark>Konami code</mark></li>
                 <li>support <mark>Gamepad API</mark></li>
