@@ -113,12 +113,37 @@
 
     <section class="slide">
         <div>
+            <h2>Advantages of <a href="http://phaser.io">Phaser.js</a></h2>
+
+            <ul>
+                <li>Big community</li>
+                <li>A lot of lines of code (a lot of JSDocs)</li>
+                <li><mark class="feature">Good quality</mark> of code (components)</li>
+                <li>Separation of layers in API, e.g. states and keyboards</li>
+                <li>Cool <a href="http://phaser.io/docs/">phaser.io/docs</a></li>
+                <li>A lot of <a href="http://phaser.io/examples/">phaser.io/examples</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Disadvantages of <a href="http://phaser.io">Phaser.js</a></h2>
+
+            <ul>
+                <li>I didn't notice...</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
             <h2>State idea</h2>
 
             <ul style="font-size: 36px">
-                <li>state definition - class with 4 methods: <mark>preload</mark>, <mark>create</mark>, <mark>update</mark>, <mark>render</mark> and optionally <mark>init</mark></li>
-                <li>only one state is active</li>
-                <li>gameplay of the game is to switch to state, e.g. choose lang, select character form menu, fight, defeat or win</li>
+                <li>State definition - class with 4 methods: <mark>preload</mark>, <mark>create</mark>, <mark>update</mark>, <mark>render</mark> and optionally <mark>init</mark></li>
+                <li>Only one state is active</li>
+                <li>Gameplay of the game is to switch to state, e.g. choose lang, select character form menu, fight, defeat or win</li>
             </ul>
         </div>
     </section>
@@ -128,7 +153,7 @@
             <h2><mark>init</mark> method</h2>
 
             <ul style="font-size: 40px">
-                <li>it runs as the first method</li>
+                <li>It runs as the first method</li>
             </ul>
         </div>
     </section>
@@ -138,7 +163,7 @@
             <h2><mark>preload</mark> method</h2>
 
             <ul style="font-size: 40px">
-                <li>method which downloads the assets - sounds and json files</li>
+                <li>Method which downloads the assets - sounds and json files</li>
             </ul>
         </div>
     </section>
@@ -148,8 +173,8 @@
             <h2><mark>create</mark> method</h2>
 
             <ul style="font-size: 40px">
-                <li>runs ones while generating the state</li>
-                <li>there we create all objects occurring in this game state</li>
+                <li>Runs ones while generating the state</li>
+                <li>There we create all objects occurring in this game state</li>
             </ul>
         </div>
     </section>
@@ -170,8 +195,8 @@
             <h2><mark>render</mark> method</h2>
 
             <ul style="font-size: 40px">
-                <li>method runs after update process </li>
-                <li>inside it we can enable displaying debug details</li>
+                <li>Method runs after update process</li>
+                <li>Inside it we can enable displaying debug details</li>
             </ul>
         </div>
     </section>
@@ -218,13 +243,13 @@
             <h2>Advantages of ECMAScript 6</h2>
 
             <ul style="font-size: 30px">
-                <li><mark>modules</mark> - no global variables</li>
-                <li><mark>importing</mark> - require only dependency</li>
-                <li>smooth syntax of <mark>class</mark> definition</li>
-                <li>"simple" <mark>inheritance</mark></li>
-                <li><mark>default parameters</mark></li>
-                <li><mark>arrow function</mark></li>
-                <li><mark>destructuring assignment</mark></li>
+                <li><mark>Modules</mark> - no global variables</li>
+                <li><mark>Importing</mark> - require only dependency</li>
+                <li>Smooth syntax of <mark>class</mark> definition</li>
+                <li>"Simple" <mark>inheritance</mark></li>
+                <li><mark>Default parameters</mark></li>
+                <li><mark>Arrow function</mark></li>
+                <li><mark>Destructuring assignment</mark></li>
             </ul>
 
             <pre style="font-size: 20px; position: absolute; left: 550px; top: 490px;" class="listing">
@@ -252,7 +277,7 @@
 
     <section class="slide">
         <div>
-            <h2>Phaser.js v2.4.3</h2>
+            <h2><a href="http://phaser.io">Phaser.js</a> v2.4.3</h2>
 
             <table style="font-size: 30px">
                 <tr>
@@ -298,7 +323,7 @@
             <h2>Write first lines of code</h2>
 
             <ul style="font-size: 40px">
-                <li>Create game object
+                <li>Create game object:
                     <ul>
                         <li>one for all game</li>
                         <li>available from each of game state</li>
@@ -321,7 +346,7 @@
             <p class="note">157 LOC (126&uarr;)</p>
 
             <ul>
-                <li>add states: <mark>MenuState</mark> - select character</li>
+                <li>Add states: <mark>MenuState</mark> - select character</li>
             </ul>
 
             <br/>
@@ -339,7 +364,7 @@
 
             <ul style="font-size: 30px">
                 <li><mark>assets</mark> - directory contains everything except code,<br/>e.g. <mark>graphics</mark>, <mark>sound</mark></li>
-                <li>display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
+                <li>Display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
             </ul>
 
             <br/>
@@ -357,10 +382,10 @@
 
             <ul style="font-size: 26px">
                 <li><mark>scripts/models/</mark> directory with characters definition, e.g. Son Goku</li>
-                <li>add states: <mark>FightState</mark>, <mark>SearchingState</mark> (screen with collected balls)</li>
+                <li>Add states: <mark>FightState</mark>, <mark>SearchingState</mark> (screen with collected balls)</li>
                 <li><mark>scripts/configuration.js</mark> - file in isolated game configuration</li>
-                <li>create instance of player class</li>
-                <li>add some buttons</li>
+                <li>Create instance of player class</li>
+                <li>Add some buttons</li>
             </ul>
 
             <br/>
@@ -377,17 +402,17 @@
             <h2>First big problem</h2>
 
             <ul>
-                <li>sharing objects between states?</li>
+                <li>Sharing objects between states?</li>
             </ul>
 
             <br/>
 
-            <h2>Ideas?</h2>
+            <h2><mark>Ideas?</mark></h2>
 
             <ul>
-                <li>global variables?</li>
-                <li><strong>never!</strong></li>
-                <li>create custom game properties!</li>
+                <li>Global variables?</li>
+                <li><strong>Never!</strong></li>
+                <li>Create custom game properties!</li>
             </ul>
         </div>
     </section>
@@ -405,7 +430,7 @@
             <p class="note">258 LOC (101&uarr;)</p>
 
             <ul>
-                <li>create map with <mark class="feature">Tiled</mark> - cool tool for create game maps</li>
+                <li>Create map with <mark class="feature">Tiled</mark> - cool tool for create game maps</li>
             </ul>
 
             <pre class="listing">
@@ -415,7 +440,7 @@
             </pre>
 
             <ul>
-                <li>add <mark>tileset</mark> to map (our spritesheet)</li>
+                <li>Add <mark>tileset</mark> to map (our spritesheet)</li>
             </ul>
 
             <pre class="listing">
@@ -425,7 +450,7 @@
             </pre>
 
             <ul>
-                <li>create layer on map and extend it to the whole game area</li>
+                <li>Create layer on map and extend it to the whole game area</li>
             </ul>
         </div>
     </section>
@@ -435,13 +460,13 @@
             <h2>Balls positions</h2>
 
             <ul>
-                <li>definition of positions dragon balls in separate files, for why?
+                <li>Definition of positions dragon balls in separate files, for why?
                     <ul>
                         <li>backend can generate that files</li>
                         <li>separate configuration from business logic</li>
                     </ul>
                 </li>
-                <li>loading JSON file</li>
+                <li>Loading JSON file</li>
             </ul>
 
             <br/>
@@ -467,7 +492,7 @@
             <h2 style="margin-bottom: 20px">Add dragon balls</h2>
 
             <ul style="font-size: 26px">
-                <li>create group object for them, for better collision management</li>
+                <li>Create group object for them, for better collision management</li>
             </ul>
         </div>
     </section>
@@ -477,7 +502,7 @@
             <h2 style="margin-bottom: 20px">Simple message</h2>
 
             <ul>
-                <li>create message</li>
+                <li>Create message</li>
             </ul>
 
             <pre class="listing">
@@ -488,7 +513,7 @@
             <br/>
 
             <ul>
-                <li>animation: <mark>fadeIn</mark></li>
+                <li>Animation: <mark>fadeIn</mark></li>
             </ul>
 
             <pre class="listing">
@@ -545,7 +570,7 @@
             <h2>Collision - a very broad subject</h2>
 
             <ul>
-                <li>player</li>
+                <li>Player</li>
             </ul>
 
             <pre>
@@ -554,7 +579,7 @@
             </pre>
 
             <ul>
-                <li>map</li>
+                <li>Map</li>
             </ul>
 
             <pre>
@@ -569,10 +594,10 @@
 
     <section class="slide">
         <div>
-            <h2>Collecting item - dragon balls</h2>
+            <h2>Collecting items - dragon balls</h2>
 
             <ul>
-                <li>group of balls should have a <mark>body</mark></li>
+                <li>Group of balls should have a <mark>body</mark></li>
             </ul>
 
             <pre class="listing">
@@ -585,7 +610,7 @@
             <br/>
 
             <ul>
-                <li>group should have defined a <mark>physics</mark></li>
+                <li>Group should have defined a <mark>physics</mark></li>
             </ul>
 
             <pre class="listing">
@@ -609,9 +634,9 @@
             <p class="note">384 LOC (126&uarr;)</p>
 
             <ul style="font-size: 30px">
-                <li>create states: <mark>ShenronState</mark>, <mark>GameOverState</mark>, <mark>TrainingState</mark></li>
-                <li>handle keyboard on <mark>MenuState</mark></li>
-                <li>create <mark>countdown</mark> - measure time to <mark>GameOver</mark></li>
+                <li>Create states: <mark>ShenronState</mark>, <mark>GameOverState</mark>, <mark>TrainingState</mark></li>
+                <li>Handle keyboard on <mark>MenuState</mark></li>
+                <li>Create <mark>countdown</mark> - measure time to <mark>GameOver</mark></li>
             </ul>
 
             <br/>
@@ -654,8 +679,8 @@
             <p class="note">710 LOC (326&uarr;)</p>
 
             <ul>
-                <li>create fake spritesheets for characters</li>
-                <li>add logo and sound</li>
+                <li>Create fake spritesheets for characters</li>
+                <li>Add logo and sound</li>
             </ul>
 
             <pre class="listing">
@@ -665,9 +690,9 @@
             </pre>
 
             <ul>
-                <li>create enemies on <mark>FightState</mark></li>
-                <li>resize hitbox during fight</li>
-                <li>create state <mark>MealState</mark> - regeneration state, HP will be reset</li>
+                <li>Create enemies on <mark>FightState</mark></li>
+                <li>Resize hitbox during fight</li>
+                <li>Create state <mark>MealState</mark> - regeneration state, HP will be reset</li>
             </ul>
         </div>
     </section>
@@ -685,9 +710,9 @@
             <p class="note">858 LOC (148&uarr;)</p>
 
             <ul>
-                <li>display player labels (HP and EXP) and avatars on <mark>FightState</mark></li>
-                <li>disable sound globally (saved state in <mark>localStorage</mark>)</li>
-                <li>add everywhere we can <mark class="feature">DragonBallPlayer</mark> logo</li>
+                <li>Display player labels (HP and EXP) and avatars on <mark>FightState</mark></li>
+                <li>Disable sound globally (saved state in <mark>localStorage</mark>)</li>
+                <li>Add everywhere we can <mark class="feature">DragonBallPlayer</mark> logo</li>
             </ul>
         </div>
     </section>
@@ -705,7 +730,7 @@
             <p class="note">1028 LOC (170&uarr;)</p>
 
             <ul>
-                <li>support mouse events on <mark>MenuState</mark></li>
+                <li>Support mouse events on <mark>MenuState</mark></li>
             </ul>
 
             <pre class="listing">
@@ -714,7 +739,7 @@
             </pre>
 
             <ul>
-                <li>check players collision</li>
+                <li>Check players collision</li>
             </ul>
 
             <pre class="listing">
@@ -724,7 +749,7 @@
             </pre>
 
             <ul>
-                <li>decrease HP of enemy when player hits him</li>
+                <li>Decrease HP of enemy when player hits him</li>
             </ul>
         </div>
     </section>
@@ -760,11 +785,11 @@
             <p class="note">1270 LOC (242&uarr;)</p>
 
             <ul>
-                <li>create screen which create only message</li>
-                <li>display game control before main part of game</li>
-                <li>rename <mark>FightState</mark> to <mark>VersusState</mark> - better name</li>
+                <li>Create screen which create only message</li>
+                <li>Display game control before main part of game</li>
+                <li>Rename <mark>FightState</mark> to <mark>VersusState</mark> - better name</li>
                 <li><mark>FightState</mark> is base class with children <mark>VersusState</mark> and <mark>TrainingState</mark></li>
-                <li>first idea for <mark>AI</mark> - create list of enemy moves</li>
+                <li>First idea for <mark>AI</mark> - create list of enemy moves</li>
             </ul>
         </div>
     </section>
@@ -800,13 +825,13 @@
             <p class="note">1533 LOC (263&uarr;)</p>
 
             <ul>
-                <li>fixed <mark>AI</mark> - random from predefined list of moves</li>
-                <li>create <mark>Utilities</mark> module</li>
-                <li>create state: <mark>LanguageState</mark></li>
-                <li>detach all text to isolated JSON files</li>
-                <li>create <mark>DefinitionTyped.js</mark></li>
-                <li>revert default player parameters on <mark>GameOverState</mark></li>
-                <li>create <mark class="feature">Easter Egg</mark>: new character available on <mark>MenuState</mark></li>
+                <li>Fixed <mark>AI</mark> - random from predefined list of moves</li>
+                <li>Create <mark>Utilities</mark> module</li>
+                <li>Create state: <mark>LanguageState</mark></li>
+                <li>Detach all text to isolated JSON files</li>
+                <li>Create <mark>DefinitionTyped.js</mark></li>
+                <li>Revert default player parameters on <mark>GameOverState</mark></li>
+                <li>Create <mark class="feature">Easter Egg</mark>: new character available on <mark>MenuState</mark></li>
             </ul>
         </div>
     </section>
@@ -836,10 +861,10 @@
             <p class="note">1732 LOC (199&uarr;)</p>
 
             <ul>
-                <li>rename <mark>SearchingState</mark> to <mark>CollectingState</mark></li>
-                <li>choose 1 map from 3 on <mark>CollectingState</mark></li>
-                <li>decrease dimensions of spritesheet (4x4 -> 2x2)</li>
-                <li>add collision with 2 tiles: 1 and 3</li>
+                <li>Rename <mark>SearchingState</mark> to <mark>CollectingState</mark></li>
+                <li>Choose 1 map from 3 on <mark>CollectingState</mark></li>
+                <li>Decrease dimensions of spritesheet (4x4 -> 2x2)</li>
+                <li>Add collision with 2 tiles: 1 and 3</li>
             </ul>
 
             <pre class="listing">
@@ -848,8 +873,8 @@
             </pre>
 
             <ul>
-                <li>converting all images to PNG - why is it a bad idea for backgrounds?</li>
-                <li>create states: PlayerPresentationState, EnemyPresentationState, WinnerState</li>
+                <li>Converting all images to PNG - why is it a bad idea for backgrounds?</li>
+                <li>Create states: PlayerPresentationState, EnemyPresentationState, WinnerState</li>
             </ul>
         </div>
     </section>
@@ -925,42 +950,16 @@
             <h2>Future plans</h2>
 
             <ul style="font-size: 22px">
-                <li>block player when someone dies on <mark>VersusState</mark></li>
-                <li>add countdown on <mark>TrainingState</mark></li>
-                <li>display app version somewhere with small font size</li>
-                <li>extend display time for <mark>MessageState</mark></li>
-                <li>fixed players collision, that they can't enter on themselves</li>
-                <li>support shortcuts</li>
-                <li>fixed <mark>Konami code</mark></li>
-                <li>support <mark>Gamepad API</mark></li>
-                <li>support <mark>Notification API</mark></li>
-                <li>draw characters and create simple favicon</li>
-            </ul>
-        </div>
-    </section>
-
-
-    <section class="slide">
-        <div>
-            <h2>Advantages of Phaser.js</h2>
-
-            <ul>
-                <li>big community</li>
-                <li>a lot of lines of code (a lot of JSDocs)</li>
-                <li>good quality of code (components)</li>
-                <li>separation of layers in API, e.g. states and keyboards</li>
-                <li>cool <a href="http://phaser.io/docs/">phaser.io/docs</a></li>
-                <li>a lot of <a href="http://phaser.io/examples/">phaser.io/examples</a></li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div>
-            <h2>Disadvantages of Phaser.js</h2>
-
-            <ul>
-                <li>I didn't notice...</li>
+                <li>Block player when someone dies on <mark>VersusState</mark></li>
+                <li>Add countdown on <mark>TrainingState</mark></li>
+                <li>Display <mark>app version</mark> somewhere with small font size</li>
+                <li>Extend display time for <mark>MessageState</mark></li>
+                <li>Fixed players collision, that they can't enter on themselves</li>
+                <li>Support <mark>shortcuts</mark></li>
+                <li>Fixed <mark>Konami code</mark></li>
+                <li>Support <mark>Gamepad API</mark></li>
+                <li>Support <mark>Notification API</mark></li>
+                <li>Draw characters and create simple <mark>favicon</mark></li>
             </ul>
         </div>
     </section>
@@ -996,9 +995,9 @@
             <h2>Lesson learned</h2>
 
             <ul>
-                <li>draw something when you are ready with implementation</li>
-                <li>keyboard handler doesn't have to be in <mark>update</mark> method</li>
-                <li>each of state has his own clock, which is destroyed when state is destroyed</li>
+                <li>Draw something when you are ready with implementation</li>
+                <li>Keyboard handler doesn't have to be in <mark>update</mark> method</li>
+                <li>Each of state has his own clock, which is destroyed when state is destroyed</li>
             </ul>
         </div>
     </section>
@@ -1008,7 +1007,7 @@
             <h2>My mistakes</h2>
 
             <ul>
-                <li>duplicate code</li>
+                <li>Duplicate code</li>
             </ul>
 
             <pre>
@@ -1022,7 +1021,7 @@
             </pre>
 
             <ul>
-                <li>I missed the manager to keep the storyline, so I decided to... <br/>buy a couple of books about <mark>Phaser.js</mark></li>
+                <li>I missed the manager to keep the storyline, so I decided to... <br/><a href="http://phaser.io/shop/books">buy a couple of books</a> about <a href="http://phaser.io">Phaser.js</a></li>
             </ul>
         </div>
     </section>
@@ -1032,7 +1031,7 @@
             <h2 style="font-size: 70px">
                 <span style="font-size: 80px">Donation</span><br/><br/>
                 <a href="https://www.patreon.com/photonstorm">patreon.com/photonstorm</a><br/><br/>
-                <span style="font-size: 50px">(Richard Davey @photonstorm)</span>
+                <span style="font-size: 50px">(Richard Davey <a href="http://twitter.com/photonstorm">@photonstorm</a>)</span>
             </h2>
         </div>
     </section>
@@ -1048,13 +1047,14 @@
             <h2>Links</h2>
 
             <ul style="font-size: 20px">
-                <li>Phaser.js: <a href="http://phaser.io/">http://phaser.io</a></li>
                 <li>Slides: <a href="http://piecioshka.github.io/warsawjs-presentation-my-10-days-with-phaser-js/">http://piecioshka.github.io/warsawjs-presentation-my-10-days-with-phaser-js</a></li>
                 <li>My games:
                     <ul>
-                        <li><a href="https://github.com/piecioshka/game-snooker">https://github.com/piecioshka/game-snooker</a></li>
-                        <li><a href="https://github.com/piecioshka/game-electrode">https://github.com/piecioshka/game-electrode</a></li>
-                        <li><a href="https://github.com/piecioshka/www.dragonballplay.com">https://github.com/piecioshka/www.dragonballplay.com</a></li>
+                        <li><a href="https://github.com/piecioshka/www.dragonballplay.com">https://github.com/piecioshka/www.dragonballplay.com</a> <strong class="peace">[COMPLETE]</strong></li>
+                        <li><a href="https://github.com/javascript-ninjas/game-fastest-joby">https://github.com/javascript-ninjas/game-fastest-joby</a> <strong class="peace">[COMPLETE]</strong></li>
+                        <li><a href="https://github.com/piecioshka/ss15-dumplings">https://github.com/piecioshka/ss15-dumplings</a> <strong class="peace">[COMPLETE]</strong></li>
+                        <li><a href="https://github.com/piecioshka/game-electrode">https://github.com/piecioshka/game-electrode</a> <strong>[WIP]</strong></li>
+                        <li><a href="https://github.com/piecioshka/game-snooker">https://github.com/piecioshka/game-snooker</a> <strong>[WIP]</strong></li>
                     </ul>
                 </li>
 
