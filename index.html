@@ -55,8 +55,8 @@
             </p>
 
             <p>
-                <span itemprop="knows">JavaScript Ninja. Mac lover. Pebble evangelist.</span><br />
-                <span>Organizer <a href="http://warsawjs.com/" itemprop="memberOf">WarsawJS</a></span><br />
+                <span itemprop="knows">JavaScript Ninja. Mac lover. Pebble evangelist.</span><br/>
+                <span>Organizer <a href="http://warsawjs.com/" itemprop="memberOf">WarsawJS</a></span><br/>
             </p>
 
             <p class="note">"Kto chce szuka sposobu, kto nie chce szuka powodu."</p>
@@ -179,12 +179,12 @@
 
     <section class="slide">
         <div>
-            <h2>Day I: Where do we start?</h2>
+            <h2>Day I: Here we go!</h2>
 
             <p class="note">31&uarr;</p>
 
             <blockquote style="font-size: 40px">
-                Use ECMAScript 6.<br />
+                Use ECMAScript 6.<br/>
                 <mark>webpack</mark> i <mark>Babel.js</mark> take care for compiling to ECMAScript 5 (for browser).
             </blockquote>
         </div>
@@ -209,7 +209,7 @@
                 <code>            loader: 'babel?<mark class="feature">stage=0</mark>'</code>
                 <code>        }]</code>
                 <code>    }</code>
-                <code>};</code>
+                <code>}</code>
             </pre>
         </div>
     </section>
@@ -271,7 +271,7 @@
                     <td scope="row">Only need to</td>
                     <td>
                         2,2M phaser-arcade-physics.js<hr/>
-                        754K phaser-arcade-physics.map<br />
+                        754K phaser-arcade-physics.map<br/>
                         <mark>567K</mark> <strong class="peace">phaser-arcade-physics.min.js</strong>
                     </td>
                 </tr>
@@ -339,7 +339,7 @@
             <h2>Day II: Design (vol. 2)</h2>
 
             <ul style="font-size: 30px">
-                <li><mark>assets</mark> - directory contains everything exclude code,<br />ex. <mark>graphics</mark>, <mark>sound</mark></li>
+                <li><mark>assets</mark> - directory contains everything exclude code,<br/>ex. <mark>graphics</mark>, <mark>sound</mark></li>
                 <li>display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
             </ul>
 
@@ -411,8 +411,8 @@
 
             <pre class="listing">
                 <code>this.load.tilemap(key, path, data, format)</code>
-                <code><mark class="comment">// data - jeśli jest path to nie data = null</mark></code>
-                <code><mark class="comment">// format - Phaser.Tilemap.TILED_JSON</mark></code>
+                <code><mark class="comment">// data: if `path` was passed, equals null</mark></code>
+                <code><mark class="comment">// format: Phaser.Tilemap.TILED_JSON</mark></code>
             </pre>
 
             <ul>
@@ -421,8 +421,8 @@
 
             <pre class="listing">
                 <code>this.load.spritesheet(key, path, width, height)</code>
-                <code><mark class="comment">// width - tile width</mark></code>
-                <code><mark class="comment">// height - tile height</mark></code>
+                <code><mark class="comment">// width: tile width</mark></code>
+                <code><mark class="comment">// height: tile height</mark></code>
             </pre>
 
             <ul>
@@ -433,7 +433,7 @@
 
     <section class="slide">
         <div>
-            <h2>Dragon ball positions</h2>
+            <h2>Balls positions</h2>
 
             <ul>
                 <li>definition of positions dragon balls in separate files, for what?
@@ -442,77 +442,157 @@
                         <li>for separate configuration from business logic</li>
                     </ul>
                 </li>
-                <li>create first sprite</li>
                 <li>loading JSON file</li>
             </ul>
+
+            <br/>
 
             <pre class="listing">
                 <code>this.load.json(key, path)</code>
                 <code>object = this.cache.getJSON(key)</code>
             </pre>
+        </div>
+    </section>
 
-            <ul>
-                <li>add character sprite</li>
-            </ul>
+    <section class="slide">
+        <div>
+            <h2 style="margin-bottom: 20px">Create first sprite - add character</h2>
 
-            <pre>
+            <pre class="listing">
+                <code><mark class="comment">// add sprite to game</mark></code>
                 <code>this.add.sprite(x, y, key)</code>
             </pre>
-        </div>
-    </section>
 
-    <section class="slide">
-        <div>
-            <h2>Simple message</h2>
+            <br/>
 
-            <pre>
-                <code>this.add.text(x, y, text)</code>
-            </pre>
+            <h2 style="margin-bottom: 20px">Add dragon balls</h2>
 
-            <h2>dodajemy smocze kule</h2>
-
-            <p>Tworzymy na ich potrzebę grupę, aby można było łatwo tworzyć kolizje</p>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div>
-            <h2>Nawigacja</h2>
-
-            <ul>
-                <li>if (keyboard.isDown(Phaser.Keyboard.LEFT) { player.x -= 5; }</li>
-                <li>ważne, że aby była kolizja gracza z czymkolwiek, to musimy operować jego prędkością a nie tylko pozycją</li>
-                <li>musimy player.velocity.x -= 5</li>
-                <li>trzeba tym samym czyścić przy każdej iteracji game loopa player.body.velocity.x = 0;</li>
+            <ul style="font-size: 26px">
+                <li>create group object for them, for better collision management</li>
             </ul>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>Kolizje - temat rzeka</h2>
+            <h2 style="margin-bottom: 20px">Simple message</h2>
 
-            - player
-                - // włączamy arcade mode dla naszego zawodnika
-                - this.physics.arcade.enable(player)
-            - mapa
-                - map.setCollisionByIndex(1) // numerowanie o 1
-                - layer = map.createLayer(name)
-                - this.physics.arcade.collide(player, layer)
-                - od teraz player będzie kolidować z kafelkiem o indeksie 0
+            <ul>
+                <li>create message</li>
+            </ul>
+
+            <pre class="listing">
+                <code><mark class="comment">// add label</mark></code>
+                <code>message = this.add.text(x, y, text)</code>
+            </pre>
+
+            <br/>
+
+            <ul>
+                <li>animation: <mark>fadeIn</mark></li>
+            </ul>
+
+            <pre class="listing">
+                <code>message.alpha = 0</code>
+                <code>this.add.tween(message).to(config, time, type, true)</code>
+                <code><mark class="comment">// config: { alpha: 1 }</mark></code>
+                <code><mark class="comment">// time: Phaser.Timer.SECOND</mark></code>
+                <code><mark class="comment">// type: Phaser.Easing.Linear.None</mark></code>
+            </pre>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <div>
+            <h2>Navigation vol. 1</h2>
+
+            <pre class="listing">
+                <code>if (keyboard.isDown(Phaser.Keyboard.LEFT) {</code>
+                <code>    <mark>player.x -= 5</mark></code>
+                <code>}</code>
+            </pre>
+
+            <br/>
+
+            <h2>Warning!</h2>
+
+            <p>If we would like use collision detection,<br/>we should update <mark class="feature">player.velocity.x</mark> not only <mark>player.x</mark>.</p>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>Zbieranie elementów - smoczych kul</h2>
+            <h2>Navigation vol. 2</h2>
 
-            - grupa musi mieć ciało
-                - balls = this.add.group()
-                - balls.enableBody = true;
-            - grupa musi mieć zdefiniowaną fizykę
-                - this.physics.arcade.enable(balls);
-                - this.physics.arcade.collide(player, balls, (player, ball) => {})
+            <pre class="listing">
+                <code><mark class="comment">// update velocity of player</mark></code>
+                <code>player.velocity.x -= 5</code>
+            </pre>
+
+            <br/>
+
+            <p>Before that process we should clear velocity!.</p>
+
+            <pre class="listing">
+                <code><mark class="comment">// reset velocity</mark></code>
+                <code>player.velocity.x = 0</code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Collision - a very broad subject</h2>
+
+            <ul>
+                <li>player</li>
+            </ul>
+
+            <pre>
+                <code><mark class="comment">// włączamy arcade mode dla naszego zawodnika</mark></code>
+                <code><mark>this.physics.arcade.enable(player)</mark></code>
+            </pre>
+
+            <ul>
+                <li>map</li>
+            </ul>
+
+            <pre>
+                <code>map.<mark class="important">setCollisionByIndex(1)</mark> <mark class="comment">// start counting from 1</mark></code>
+                <code>layer = map.createLayer(name)</code>
+                <code><mark>this.physics.arcade.collide(player, layer)</mark></code>
+            </pre>
+
+            <p>Player will be collide with tile with <mark class="feature">index 0</mark> from now!</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Collecting item - dragon balls</h2>
+
+            <ul>
+                <li>group of balls should has a <mark>body</mark></li>
+            </ul>
+
+            <pre class="listing">
+                <code>balls = this.add.group()</code>
+                <code>balls.enableBody = true</code>
+            </pre>
+
+            <br/>
+            <hr/>
+            <br/>
+
+            <ul>
+                <li>group should has defined a <mark>physics</mark></li>
+            </ul>
+
+            <pre class="listing">
+                <code>this.physics.arcade.enable(balls)</code>
+                <code>this.physics.arcade.collide(player, balls, handler)</code>
+            </pre>
         </div>
     </section>
 
@@ -525,19 +605,22 @@
 
     <section class="slide">
         <div>
-            <h2>Day IV: Czas z zegara</h2>
+            <h2>Day IV: Time from clock</h2>
 
             <p class="note">384 LOC (126&uarr;)</p>
 
-            - zegary
-                - this.time.events.add(second, hander, context) - zegarek przywiązany do stanu
-            - animacje: fadeIn
-                - message.alpha = 0;
-                - this.add.tween(message).to({ alpha: 1 }, lifetime, type, true);
-                    - lifetime: Phaser.Timer.SECOND
-                    - type: Phaser.Easing.Linear.None
-            - stworzenie zegara countdown
-                - odmierzamy czas do GameOver
+            <ul style="font-size: 30px">
+                <li>create states: <mark>ShenronState</mark>, <mark>GameOverState</mark>, <mark>TrainingState</mark></li>
+                <li>handle keyboard on <mark>MenuState</mark></li>
+                <li>create <mark>countdown</mark> - measure time to <mark>GameOver</mark></li>
+            </ul>
+
+            <br/>
+
+            <pre class="listing">
+                <code><mark class="comment">// clock with reference to state</mark></code>
+                <code>this.time.events.add(time, handler, context)</code>
+            </pre>
         </div>
     </section>
 
@@ -567,17 +650,26 @@
 
     <section class="slide">
         <div>
-            <h2>Day V: Muzyko graj!</h2>
+            <h2>Day V: Music!</h2>
 
             <p class="note">710 LOC (326&uarr;)</p>
 
-            - dodajemy logo i muzykę
-                - this.load.audio(key, path)
-                - sound = this.add.audio(key)
-                - sound.play()
-            - tworzymy przeciwników w walce
-            - powiększenie hitboxów podczas wykonywania uderzeń
-            - tworzymy MealState - ekran odpoczynku, podczas którego HP będzie regenerowane
+            <ul>
+                <li>create fakes spritesheets for characters</li>
+                <li>add logo and sound</li>
+            </ul>
+
+            <pre class="listing">
+                <code>this.load.audio(key, path)</code>
+                <code>sound = this.add.audio(key)</code>
+                <code>sound.play()</code>
+            </pre>
+
+            <ul>
+                <li>create enemies on <mark>FightState</mark></li>
+                <li>resize hitbox during fight</li>
+                <li>create state <mark>MealState</mark> - regeneration state, HP will be reset</li>
+            </ul>
         </div>
     </section>
 
@@ -589,12 +681,15 @@
 
     <section class="slide">
         <div>
-            <h2>Day VI: Pokazujemy paski</h2>
+            <h2>Day VI: Display bars</h2>
 
             <p class="note">858 LOC (148&uarr;)</p>
 
-            - prezentacja labelek i avatarów zawodników w FightState
-            - możliwość wyłączania globalnie dźwięków w aplikacji zapisywana w localStorage
+            <ul>
+                <li>display player labels (HP and EXP) and avatars on <mark>FightState</mark></li>
+                <li>disable globally sound (saved state in <mark>localStorage</mark>)</li>
+                <li>add everywhere we can logo <mark class="feature">DragonBallPlayer</mark></li>
+            </ul>
         </div>
     </section>
 
@@ -606,15 +701,32 @@
 
     <section class="slide">
         <div>
-            <h2>Day VII: Kolizje zawodników</h2>
+            <h2>Day VII: Player collision</h2>
 
             <p class="note">1028 LOC (170&uarr;)</p>
 
-            - wspieramy ruch myszki podczas wybierania postaci
-                - button.events.onInputOver.add(hadnler, context)
-            - weryfikacja czy zawodnicy się zderzyli
-                - isOverlap() => this.physics.arcade.overlap(player, enemy)
-            - usuwamy życie dla wroga wtedy kiedy player do uderzy
+            <ul>
+                <li>support mouse events on <mark>MenuState</mark></li>
+            </ul>
+
+            <pre class="listing">
+                <code><mark class="comment">// support mouse over</mark></code>
+                <code>button.events.onInputOver.add(handler, context)</code>
+            </pre>
+
+            <ul>
+                <li>check players collision</li>
+            </ul>
+
+            <pre class="listing">
+                <code>isOverlap() => {</code>
+                <code>    return <mark>this.physics.arcade.overlap(player, enemy)</mark></code>
+                <code>}</code>
+            </pre>
+
+            <ul>
+                <li>decrease HP of enemy when player hit him</li>
+            </ul>
         </div>
     </section>
 
@@ -644,14 +756,17 @@
 
     <section class="slide">
         <div>
-            <h2>Day VIII: Początki sztucznej inteligencji</h2>
+            <h2>Day VIII: Create Artificial Intelligence</h2>
 
             <p class="note">1270 LOC (242&uarr;)</p>
 
-            - tworzymy ekran, który prezentuje tylko komunikat
-            - zmiana nazwy FightState na VersusState - lepiej obrazuje jaki to ekran
-            - FightState jest klasą z której dziedziczy VersusState oraz TrainingState - dzięki temu usuwamy wiele zduplikowanego kodu
-            - zaczynamy wspierać pseudo „sztuczną inteligencję” - wykonujemy wrogiem ten sam styl walki
+            <ul>
+                <li>create screen which create only message</li>
+                <li>display game control before main part of game</li>
+                <li>rename <mark>FightState</mark> to <mark>VersusState</mark> - better name</li>
+                <li><mark>FightState</mark> is base class with children <mark>VersusState</mark> and <mark>TrainingState</mark></li>
+                <li>first idea for <mark>AI</mark> - create list of enemy moves</li>
+            </ul>
         </div>
     </section>
 
@@ -685,13 +800,15 @@
 
             <p class="note">1533 LOC (263&uarr;)</p>
 
-            - poprawienie „sztucznej inteligencji” - losowanie z listy ruchów, tym samym przeciwnik jest nie przewidywalny
-            - stworzenie Utilities - worek z funkcjami
-            - stworzenie ekranu z wyborem języka
-            - przeniesienie wszystkich tekstów do oddzielnych plików z tłumaczeniami (JSON)
-            - stworzenie DefinitionTyped.js
-            - przewrócenie początkowych wartości gracza po GameOver
-            - stworzenie easter egg-a: nowa postać do wyboru Piccolo - kto po wie jaki jest skrót na włączenie go podczas gry dostanie koszulkę!
+            <ul>
+                <li>fixed <mark>AI</mark> - random from predefined list of moves</li>
+                <li>create <mark>Utilities</mark> module</li>
+                <li>create state: <mark>LanguageState</mark></li>
+                <li>detach all text to isolated JSON files</li>
+                <li>create <mark>DefinitionTyped.js</mark></li>
+                <li>revert default parameters of player on <mark>GameOverState</mark></li>
+                <li>create <mark class="feature">Easter Egg</mark>: new character available on <mark>MenuState</mark></li>
+            </ul>
         </div>
     </section>
 
@@ -715,19 +832,26 @@
 
     <section class="slide">
         <div>
-            <h2>Day X: Ostatni dzień wyzwania</h2>
+            <h2>Day X: Last day</h2>
 
             <p class="note">1732 LOC (199&uarr;)</p>
 
-            - losujemy 1 mapkę z 3 możliwych, podczas zbierania smoczych kul
-            - zmiana nazwy SearchingState na CollectingState
-            - zmniejszamy spritesheeta do 2x2 kafelków
-            - dodajemy kolizję z dwom kafelkami 1 i 3
-                - map.setCollision([1, 3]);
-            - konwersja wszystkich obrazków na PNG
-                - dlaczego się nie opłaca robić tego przy tłach gry?
-            - dodanie obrazka pojawiania się smoka do ShenronState
-            - stworzenie stanów: PlayerPresentationState, EnemyPresentationState, WinnerState
+            <ul>
+                <li>rename <mark>SearchingState</mark> to <mark>CollectingState</mark></li>
+                <li>choose 1 map from 3 on <mark>CollectingState</mark></li>
+                <li>decrease dimensions of spritesheet (4x4 -> 2x2)</li>
+                <li>add collision with 2 tiles: 1 and 3</li>
+            </ul>
+
+            <pre class="listing">
+                <code><mark class="comment">// upgrade collision</mark></code>
+                <code>map.setCollision([1, 3])</code>
+            </pre>
+
+            <ul>
+                <li>converting all images to PNG - why is bad idea for backgrounds?</li>
+                <li>create states: PlayerPresentationState, EnemyPresentationState, WinnerState</li>
+            </ul>
         </div>
     </section>
 
@@ -799,19 +923,19 @@
 
     <section class="slide">
         <div>
-            <h2>Przyszłość</h2>
+            <h2>Future plans</h2>
 
-            <ul style="font-size: 22px;">
-                <li>develop: blokować zachowanie zawodnika kiedy przegrał</li>
-                <li>develop: licznik czasu na treningu</li>
-                <li>develop: prezentować wersję gry drobnym druczkiem</li>
-                <li>develop: dłuższe prezentowanie tekstów</li>
-                <li>develop: blokowanie postaci, aby nie wchodziły na siebie, ani nie przesuwały</li>
-                <li>develop: skróty klawiaturowe w walce</li>
-                <li>develop: poprawić obsługę "Konami code"</li>
-                <li>develop: dodać wsparcie Gamepad API</li>
-                <li>develop: wykorzystać Notification API</li>
-                <li>design: narysować postacie, stworzyć favicon</li>
+            <ul style="font-size: 22px">
+                <li>block player when someone die on <mark>VersusState</mark></li>
+                <li>add countdown on <mark>TrainingState</mark></li>
+                <li>display app version somewhere with small font size</li>
+                <li>add some seconds when display <mark>MessageState</mark></li>
+                <li>fixed players collision, that they can't enter on themself</li>
+                <li>support shortcuts</li>
+                <li>fixed <mark>Konami code</mark></li>
+                <li>support <mark>Gamepad API</mark></li>
+                <li>support <mark>Notification API</mark></li>
+                <li>draw characters and create simple favicon</li>
             </ul>
         </div>
     </section>
@@ -819,75 +943,87 @@
 
     <section class="slide">
         <div>
-            <h2>Zalety biblioteki</h2>
+            <h2>Advantages of Phaser.js</h2>
 
             <ul>
-                <li>bardzo duża społeczność</li>
-                <li>bardzo dużo linijek kodu? tak, dużo komentarzy (JSDoc)</li>
-                <li>wszystkie składniki dobrze wykonane</li>
-                <li>w API widać dużą odseparowanie warstw, np. state i keyboard</li>
-                <li>super dokumentacja</li>
-                <li>mnóstwo przykładów</li>
+                <li>big community</li>
+                <li>a lot of lines of code (a lot of JSDocs)</li>
+                <li>good quality of code (components)</li>
+                <li>separation of layers in API, ex. states and keyboards</li>
+                <li>cool <a href="http://phaser.io/docs/">phaser.io/docs</a></li>
+                <li>a lot of <a href="http://phaser.io/examples/">phaser.io/examples</a></li>
             </ul>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>Wady</h2>
+            <h2>Disadvantages of Phaser.js</h2>
 
             <ul>
-                <li>nie znalazłem, może ktoś na sali zna?</li>
+                <li>I didn't notice...</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2><strong>Worst</strong> part of code</h2>
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <h2 style="background: rgba(0, 0, 0, 0.6); padding: 10px; border-radius: 5px">scripts/states/VersusState.es6.js</h2>
+            <img src="pictures/code/worst-part-of-code.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide shout">
+        <div>
+            <h2><strong class="peace">The best</strong> part of code</h2>
+        </div>
+    </section>
+
+    <section class="slide cover">
+        <div>
+            <h2 style="background: rgba(0, 0, 0, 0.7); padding: 10px; border-radius: 5px">scripts/main.es6.js</h2>
+            <img src="pictures/code/the-best-part-of-code.jpg" alt="">
+        </div>
+    </section>
+
+    <section class="slide">
+        <div>
+            <h2>Lesson learned</h2>
+
+            <ul>
+                <li>draw something when you are ready with implementation</li>
+                <li>keyboard handler doesn't have to in <mark>update</mark> method</li>
+                <li>each of state has his own clock, which is destroy when state is destroy</li>
             </ul>
         </div>
     </section>
 
     <section class="slide">
         <div>
-            <h2>Najgorszy kawałek kodu</h2>
+            <h2>My mistakes</h2>
 
             <ul>
-                <li>callback hell: VersusState.es6.js:113</li>
-                <li>MenuState.es6.js:81</li>
-                <li>ShenronState.es6.js:33</li>
+                <li>duplicate code</li>
             </ul>
-        </div>
-    </section>
 
-    <section class="slide">
-        <div>
-            <h2>Najlepszy kawałek kodu?</h2>
+            <pre>
+                <code><mark>Phaser.State#rnd.integerInRange(min, max)</mark></code>
+            </pre>
 
-            <ul>
-                <li>współdzielenie obiektu gracza między stanami: MenuState.es6.js:65</li>
-                <li>kolizje: CollectingState.es6.js:128</li>
-                <li>wybór języka: LanguageState.es6.js</li>
-                <li>main.es6.js</li>
-            </ul>
-        </div>
-    </section>
+            instead of:
 
-    <section class="slide">
-        <div>
-            <h2>Moje wnioski, czyli czego się nauczyłem</h2>
+            <pre>
+                <code><mark>Utilities.random(min, max)</mark></code>
+            </pre>
 
             <ul>
-                <li>grafika zostawiamy na koniec, szkoda czas marnować kiedy czas jest ważny</li>
-                <li>obsługa klawiszy nie musi być wcale w metodzie update danego state-a</li>
-                <li>każdy stan ma swój zegar, który zostaje zniszczony kiedy stan zostaje zniszczony</li>
-                <li>brakowało mi managera do trzymania fabuły gry, dlatego postanowiłem, że kupię 3 książki nt. Phaser.js</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="slide">
-        <div>
-            <h2>Moje niedopatrzenia</h2>
-
-            <ul>
-                <li>
-                    <mark>Phaser.State#rnd.integerInRange(min, max)</mark> instead of <mark>Utilities.random(min, max)</mark>
-                </li>
+                <li>I missed the manager to keep the storyline, so I decided to... <br/>buy couple books about <mark>Phaser.js</mark></li>
             </ul>
         </div>
     </section>
@@ -895,8 +1031,8 @@
     <section class="slide shout">
         <div>
             <h2 style="font-size: 70px">
-                <span style="font-size: 80px">Donation</span><br /><br />
-                <a href="https://www.patreon.com/photonstorm">patreon.com/photonstorm</a><br /><br />
+                <span style="font-size: 80px">Donation</span><br/><br/>
+                <a href="https://www.patreon.com/photonstorm">patreon.com/photonstorm</a><br/><br/>
                 <span style="font-size: 50px">(Richard Davey @photonstorm)</span>
             </h2>
         </div>
