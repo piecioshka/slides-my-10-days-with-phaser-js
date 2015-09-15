@@ -99,7 +99,7 @@
 
     <section class="slide shout">
         <div>
-            <h2>I made a <strong>game</strong>.</h2>
+            <h2>I made a <strong>game</strong></h2>
         </div>
     </section>
 
@@ -115,7 +115,7 @@
         <div>
             <h2>Advantages of <a href="http://phaser.io">Phaser.js</a></h2>
 
-            <ul>
+            <ul style="font-size: 36px">
                 <li>Big community</li>
                 <li>A lot of lines of code (a lot of JSDocs)</li>
                 <li><mark class="feature">Good quality</mark> of code (components)</li>
@@ -130,7 +130,7 @@
         <div>
             <h2>Disadvantages of <a href="http://phaser.io">Phaser.js</a></h2>
 
-            <ul>
+            <ul style="font-size: 36px">
                 <li>I didn't notice...</li>
             </ul>
         </div>
@@ -138,12 +138,12 @@
 
     <section class="slide">
         <div>
-            <h2>State idea</h2>
+            <h2>"State idea"</h2>
 
             <ul style="font-size: 36px">
+                <li>The gameplay is based on <mark>state switching</mark>, e.g. choose language, select character from menu, fight, defeat or win</li>
                 <li>State definition - class with 4 methods: <mark>preload</mark>, <mark>create</mark>, <mark>update</mark>, <mark>render</mark> and optionally <mark>init</mark></li>
-                <li>Only one state is active</li>
-                <li>The gameplay is based on state switching, e.g. choose language, select character from menu, fight, defeat or win</li>
+                <li>Only <mark class="feature">one state is active</mark>!</li>
             </ul>
         </div>
     </section>
@@ -163,7 +163,13 @@
             <h2><mark>preload</mark> method</h2>
 
             <ul style="font-size: 40px">
-                <li>Method which downloads the assets - sounds and json files</li>
+                <li>Method which downloads the assets
+                    <ul>
+                        <li>images</li>
+                        <li>sounds</li>
+                        <li>json files</li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </section>
@@ -185,7 +191,11 @@
 
             <ul style="font-size: 40px">
                 <li><mark>Phaser.Game#raf</mark> via <mark>requestAnimationFrame</mark> or <mark>setTimeout</mark></li>
-                <li>38881: The core game loop - method <mark>Phaser.Game#update</mark></li>
+                <li>38881: <mark>Phaser.Game#update</mark>
+                    <ul>
+                        <li><mark class="feature">The core game loop</mark></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </section>
@@ -223,16 +233,14 @@
                 <code>    resolve: { extensions: <mark class="important">['.es6.js', '.js', '']</mark> },</code>
                 <code>    <mark>entry</mark>: './app/scripts/main',</code>
                 <code>    <mark>output</mark>: {</code>
-                <code>        filename: 'bundle.js',</code>
-                <code>        path: './app/dist'</code>
+                <code>        filename: <mark>'bundle.js'</mark>,</code>
+                <code>        path: <mark>'./app/dist'</mark></code>
                 <code>    },</code>
-                <code>    module: {</code>
-                <code>        loaders: [{</code>
-                <code>            test: <mark class="important">/\.es6\.js/</mark>,</code>
-                <code>            exclude: <mark>/node_modules/</mark>,</code>
-                <code>            loader: 'babel?<mark class="feature">stage=0</mark>'</code>
-                <code>        }]</code>
-                <code>    }</code>
+                <code>    module: { loaders: [{</code>
+                <code>        test: <mark class="important">/\.es6\.js/</mark>,</code>
+                <code>        exclude: <mark>/node_modules/</mark>,</code>
+                <code>        loader: 'babel?<mark class="feature">stage=0</mark>'</code>
+                <code>    }] }</code>
                 <code>}</code>
             </pre>
         </div>
@@ -245,15 +253,13 @@
             <ul style="font-size: 30px">
                 <li><mark>Modules</mark> - no global variables</li>
                 <li><mark>Importing</mark> - require only dependency</li>
-                <li>Smooth syntax of <mark>class</mark> definition</li>
-                <li>"Simple" <mark>inheritance</mark></li>
-                <li><mark>Default parameters</mark></li>
-                <li><mark>Arrow function</mark></li>
-                <li><mark>Destructuring assignment</mark></li>
+                <li>Smooth syntax of <mark>class</mark> definition with cool <mark>inheritance</mark></li>
+                <li><mark>Default parameters</mark> and <mark>Arrow function</mark></li>
             </ul>
 
-            <pre style="font-size: 20px; position: absolute; left: 550px; top: 490px;" class="listing">
-                <code><mark class="feature">var [x, y] = ['abc', 100]</mark></code>
+            <pre style="font-size: 30px">
+                <code><mark class="feature">// Destructuring assignment</mark></code>
+                <code>let [<mark>x</mark>, <mark class="important">y</mark>] = [<mark>'abc'</mark>, <mark class="important">100</mark>]</code>
                 <code><mark class="comment">// x = 'abc', y = 100</mark></code>
             </pre>
         </div>
@@ -323,12 +329,17 @@
             <h2>Write first lines of code</h2>
 
             <ul style="font-size: 40px">
-                <li>Create a game object:
-                    <ul>
-                        <li>one for all game</li>
-                        <li>available from the each of game state</li>
-                    </ul>
-                </li>
+                <li>Create a game object</li>
+            </ul>
+
+            <pre class="listing" style="font-size: 24px">
+                <code><mark class="comment">// Create game object</mark></code>
+                <code>this.game = <mark class="important">new Phaser.Game</mark>(800, 400, Phaser.Canvas, 'game`)</code>
+            </pre>
+
+            <ul style="font-size: 40px">
+                <li>One for all game</li>
+                <li>Available from the each of game state</li>
             </ul>
         </div>
     </section>
@@ -345,15 +356,17 @@
 
             <p class="note">157 LOC (126&uarr;)</p>
 
-            <ul>
+            <ul style="font-size: 40px">
                 <li>Add states: <mark>MenuState</mark> - select character</li>
             </ul>
 
             <br/>
 
             <pre class="listing">
-                <code>this.game.state.add(name, handler)</code>
-                <code>this.game.state.start(name)</code>
+                <code><mark class="comment">// Add state to set</mark></code>
+                <code>this.<mark class="important">game.state.add</mark>(name, handler)</code>
+                <code><mark class="comment">// Activate passed state</mark></code>
+                <code>this.<mark class="important">game.state.start</mark>(name)</code>
             </pre>
         </div>
     </section>
@@ -367,11 +380,11 @@
                 <li>Display first in <mark>game background</mark> - simple image with game dimension and position in point <mark>0,0</mark></li>
             </ul>
 
-            <br/>
-
             <pre class="listing">
-                <code>this.load.image(key, path)</code>
-                <code>this.add.image(x, y, key)</code>
+                <code><mark class="comment">// Load image file and put it to cache</mark></code>
+                <code>this.<mark class="important">load.image</mark>(key, path)</code>
+                <code><mark class="comment">// Fetch from cache image and put to Canvas</mark></code>
+                <code>this.<mark class="important">add.image</mark>(x, y, key)</code>
             </pre>
         </div>
     </section>
@@ -391,8 +404,8 @@
             <br/>
 
             <pre class="listing">
-                <code>this.add.button(x, y, key, handler)</code>
-                <code><mark class="comment">// e.g. this.add.button(10, 20, 'btn-ico', () => {})</mark></code>
+                <code><mark class="comment">// Add button to Canvas</mark></code>
+                <code>this.<mark class="important">add.button</mark>(x, y, key, handler)</code>
             </pre>
         </div>
     </section>
@@ -434,7 +447,7 @@
             </ul>
 
             <pre class="listing">
-                <code>this.load.tilemap(key, path, data, format)</code>
+                <code>this.<mark class="important">load.tilemap</mark>(key, path, data, format)</code>
                 <code><mark class="comment">// data: if `path` was passed, equals null</mark></code>
                 <code><mark class="comment">// format: Phaser.Tilemap.TILED_JSON</mark></code>
             </pre>
@@ -444,7 +457,7 @@
             </ul>
 
             <pre class="listing">
-                <code>this.load.spritesheet(key, path, width, height)</code>
+                <code>this.<mark class="important">load.spritesheet</mark>(key, path, width, height)</code>
                 <code><mark class="comment">// width: tile width</mark></code>
                 <code><mark class="comment">// height: tile height</mark></code>
             </pre>
@@ -469,11 +482,11 @@
                 <li>Loading JSON file</li>
             </ul>
 
-            <br/>
-
             <pre class="listing">
-                <code>this.load.json(key, path)</code>
-                <code>object = this.cache.getJSON(key)</code>
+                <code><mark class="comment">// Fetch file and put response into cache</mark></code>
+                <code>this.<mark class="important">load.json</mark>(key, path)</code>
+                <code><mark class="comment">// Return parsed object</mark></code>
+                <code>object = this.<mark class="important">cache.getJSON</mark>(key)</code>
             </pre>
         </div>
     </section>
@@ -483,8 +496,8 @@
             <h2 style="margin-bottom: 20px">Create the first sprite - character</h2>
 
             <pre class="listing">
-                <code><mark class="comment">// add sprite to game</mark></code>
-                <code>this.add.sprite(x, y, key)</code>
+                <code><mark class="comment">// Add sprite to game</mark></code>
+                <code>this.<mark class="important">add.sprite</mark>(x, y, key)</code>
             </pre>
 
             <br/>
@@ -506,8 +519,8 @@
             </ul>
 
             <pre class="listing">
-                <code><mark class="comment">// add label</mark></code>
-                <code>message = this.add.text(x, y, text)</code>
+                <code><mark class="comment">// Add label</mark></code>
+                <code>message = this.<mark class="important">add.text</mark>(x, y, text)</code>
             </pre>
 
             <br/>
@@ -518,7 +531,7 @@
 
             <pre class="listing">
                 <code>message.alpha = 0</code>
-                <code>this.add.tween(message).to(config, time, type, true)</code>
+                <code>this.<mark class="important">add.tween</mark>(message).to(config, time, type, true)</code>
                 <code><mark class="comment">// config: { alpha: 1 }</mark></code>
                 <code><mark class="comment">// time: Phaser.Timer.SECOND</mark></code>
                 <code><mark class="comment">// type: Phaser.Easing.Linear.None</mark></code>
@@ -532,7 +545,7 @@
             <h2>Navigation vol. 1</h2>
 
             <pre class="listing">
-                <code>if (keyboard.isDown(Phaser.Keyboard.LEFT) {</code>
+                <code>if (<mark class="important">keyboard.isDown</mark>(Phaser.Keyboard.LEFT) {</code>
                 <code>    <mark>player.x -= 5</mark></code>
                 <code>}</code>
             </pre>
@@ -550,7 +563,7 @@
             <h2>Navigation vol. 2</h2>
 
             <pre class="listing">
-                <code><mark class="comment">// update velocity of player</mark></code>
+                <code><mark class="comment">// Update velocity of player</mark></code>
                 <code>player.velocity.x -= 5</code>
             </pre>
 
@@ -559,7 +572,7 @@
             <p>Remember to clear velocity before that process!</p>
 
             <pre class="listing">
-                <code><mark class="comment">// reset velocity</mark></code>
+                <code><mark class="comment">// Reset velocity</mark></code>
                 <code>player.velocity.x = 0</code>
             </pre>
         </div>
@@ -574,7 +587,7 @@
             </ul>
 
             <pre>
-                <code><mark class="comment">// enable arcade mode for our player</mark></code>
+                <code><mark class="comment">// Enable arcade mode for our player</mark></code>
                 <code><mark>this.physics.arcade.enable(player)</mark></code>
             </pre>
 
@@ -583,7 +596,7 @@
             </ul>
 
             <pre>
-                <code>map.<mark class="important">setCollisionByIndex(1)</mark> <mark class="comment">// start counting from 1</mark></code>
+                <code>map.<mark class="important">setCollisionByIndex(1)</mark> <mark class="comment">// Start counting from 1</mark></code>
                 <code>layer = map.createLayer(name)</code>
                 <code><mark>this.physics.arcade.collide(player, layer)</mark></code>
             </pre>
@@ -601,7 +614,7 @@
             </ul>
 
             <pre class="listing">
-                <code>balls = this.add.group()</code>
+                <code>balls = this.<mark class="important">add.group</mark>()</code>
                 <code>balls.enableBody = true</code>
             </pre>
 
@@ -614,8 +627,8 @@
             </ul>
 
             <pre class="listing">
-                <code>this.physics.arcade.enable(balls)</code>
-                <code>this.physics.arcade.collide(player, balls, handler)</code>
+                <code><mark>this.physics.arcade.enable(balls)</mark></code>
+                <code><mark>this.physics.arcade.collide(player, balls, handler)</mark></code>
             </pre>
         </div>
     </section>
@@ -642,8 +655,8 @@
             <br/>
 
             <pre class="listing">
-                <code><mark class="comment">// clock with reference to state</mark></code>
-                <code>this.time.events.add(time, handler, context)</code>
+                <code><mark class="comment">// Clock with reference to state</mark></code>
+                <code>this.<mark class="important">time.events.add</mark>(time, handler, context)</code>
             </pre>
         </div>
     </section>
@@ -684,9 +697,9 @@
             </ul>
 
             <pre class="listing">
-                <code>this.load.audio(key, path)</code>
-                <code>sound = this.add.audio(key)</code>
-                <code>sound.play()</code>
+                <code>this.<mark class="important">load.audio</mark>(key, path)</code>
+                <code>sound = this.<mark class="important">add.audio</mark>(key)</code>
+                <code>sound.<mark class="important">play</mark>()</code>
             </pre>
 
             <ul>
@@ -734,8 +747,8 @@
             </ul>
 
             <pre class="listing">
-                <code><mark class="comment">// support mouse over</mark></code>
-                <code>button.events.onInputOver.add(handler, context)</code>
+                <code><mark class="comment">// Support mouse over</mark></code>
+                <code>button.<mark class="important">events.onInputOver.add</mark>(handler, context)</code>
             </pre>
 
             <ul>
@@ -868,8 +881,8 @@
             </ul>
 
             <pre class="listing">
-                <code><mark class="comment">// upgrade collision</mark></code>
-                <code>map.setCollision([1, 3])</code>
+                <code><mark class="comment">// Upgrade collision</mark></code>
+                <code>map.<mark class="important">setCollision</mark>([1, 3])</code>
             </pre>
 
             <ul>
