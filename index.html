@@ -313,7 +313,7 @@
         <div>
             <h2>Why not in modules?</h2>
 
-            <ul style="font-size: 36px">
+            <ul style="font-size: 40px">
                 <li>Throw an error: <strong>"PIXI is not defined"</strong></li>
                 <li><mark>webpack</mark> will have big file to manage
                     <ul>
@@ -564,16 +564,18 @@
 
             <pre class="listing">
                 <code><mark class="comment">// Update velocity of player</mark></code>
-                <code>player.velocity.x -= 5</code>
+                <code><mark>player.velocity.x -= 5</mark></code>
             </pre>
 
             <br/>
 
-            <p>Remember to clear velocity before that process!</p>
+            <blockquote style="font-size: 40px"><strong>Remember to clear velocity before that process!</strong></blockquote>
+
+            <br/>
 
             <pre class="listing">
                 <code><mark class="comment">// Reset velocity</mark></code>
-                <code>player.velocity.x = 0</code>
+                <code><mark>player.velocity.x = 0</mark></code>
             </pre>
         </div>
     </section>
@@ -601,7 +603,7 @@
                 <code><mark>this.physics.arcade.collide(player, layer)</mark></code>
             </pre>
 
-            <p>Player will be collide with tile with <mark class="feature">index 0</mark> from now!</p>
+            <p>Player will be collide with <mark class="feature">tile</mark> with <mark class="feature">index = 0</mark> from now!</p>
         </div>
     </section>
 
@@ -619,15 +621,15 @@
             </pre>
 
             <br/>
-            <hr/>
-            <br/>
 
             <ul>
                 <li>Group should have defined a <mark>physics</mark></li>
             </ul>
 
             <pre class="listing">
+                <code><mark class="comment">// Add body to group of balls</mark></code>
                 <code><mark>this.physics.arcade.enable(balls)</mark></code>
+                <code><mark class="comment">// Start collide between player and group of balls</mark></code>
                 <code><mark>this.physics.arcade.collide(player, balls, handler)</mark></code>
             </pre>
         </div>
@@ -704,7 +706,7 @@
 
             <ul>
                 <li>Create enemies on <mark>FightState</mark></li>
-                <li>Resize hitbox during fight</li>
+                <li>Resize <strong class="peace">hitbox</strong> during fight</li>
                 <li>Create state <mark>MealState</mark> - regeneration state, HP will be reset</li>
             </ul>
         </div>
@@ -722,10 +724,10 @@
 
             <p class="note">858 LOC (148&uarr;)</p>
 
-            <ul>
-                <li>Display player labels (HP and EXP) and avatars on <mark>FightState</mark></li>
+            <ul style="font-size: 34px">
+                <li>Display player labels (HP and EXP),<br/>and player avatars on <mark>FightState</mark></li>
                 <li>Disable sound globally (saved state in <mark>localStorage</mark>)</li>
-                <li>Add everywhere we can <mark class="feature">DragonBallPlayer</mark> logo</li>
+                <li>Add everywhere we can <mark class="feature">DragonBallPlay</mark> logo</li>
             </ul>
         </div>
     </section>
@@ -797,7 +799,7 @@
 
             <p class="note">1270 LOC (242&uarr;)</p>
 
-            <ul>
+            <ul style="font-size: 28px">
                 <li>Create screen which create only message</li>
                 <li>Display game control before main part of game</li>
                 <li>Rename <mark>FightState</mark> to <mark>VersusState</mark> - better name</li>
@@ -838,8 +840,8 @@
             <p class="note">1533 LOC (263&uarr;)</p>
 
             <ul>
-                <li>Fixed <mark>AI</mark> - random from predefined list of moves</li>
-                <li>Create <mark>Utilities</mark> module</li>
+                <li>Fixed <mark>AI</mark> - choose random move from predefined list</li>
+                <li>Create <mark>Utilities</mark> module with <mark>static</mark> methods</li>
                 <li>Create state: <mark>LanguageState</mark></li>
                 <li>Detach all text to isolated JSON files</li>
                 <li>Create <mark>DefinitionTyped.js</mark></li>
@@ -875,8 +877,7 @@
 
             <ul>
                 <li>Rename <mark>SearchingState</mark> to <mark>CollectingState</mark></li>
-                <li>Choose 1 map from 3 on <mark>CollectingState</mark></li>
-                <li>Decrease dimensions of spritesheet (4x4 -> 2x2)</li>
+                <li>Choose randomly 1 map from 3 on <mark>CollectingState</mark></li>
                 <li>Add collision with 2 tiles: 1 and 3</li>
             </ul>
 
@@ -887,7 +888,7 @@
 
             <ul>
                 <li>Converting all images to PNG - why is it a bad idea for backgrounds?</li>
-                <li>Create states: PlayerPresentationState, EnemyPresentationState, WinnerState</li>
+                <li>Create states: <mark>PlayerPresentationState</mark>, <mark>EnemyPresentationState</mark>, <mark>WinnerState</mark></li>
             </ul>
         </div>
     </section>
@@ -963,7 +964,7 @@
             <h2>Future plans</h2>
 
             <ul style="font-size: 22px">
-                <li>Block player when someone dies on <mark>VersusState</mark></li>
+                <li>Block players moves when someone dies on <mark>VersusState</mark></li>
                 <li>Add countdown on <mark>TrainingState</mark></li>
                 <li>Display <mark>app version</mark> somewhere with small font size</li>
                 <li>Extend display time for <mark>MessageState</mark></li>
@@ -1007,10 +1008,10 @@
         <div>
             <h2>What I learned?</h2>
 
-            <ul>
-                <li>Draw something when you are ready with implementation</li>
+            <ul style="font-size: 32px">
+                <li>Draw something <mark>when you are finish</mark> implementation</li>
                 <li>Keyboard handler doesn't have to be in <mark>update</mark> method</li>
-                <li>Each of state has his own clock, which is destroyed when state is destroyed</li>
+                <li>Each of <mark>state has his own clock</mark>, which is destroyed when state is destroyed</li>
             </ul>
         </div>
     </section>
@@ -1019,7 +1020,7 @@
         <div>
             <h2>My mistakes</h2>
 
-            <ul>
+            <ul style="font-size: 30px">
                 <li>Duplicate code</li>
             </ul>
 
@@ -1033,7 +1034,7 @@
                 <code><mark>Utilities.random(min, max)</mark></code>
             </pre>
 
-            <ul>
+            <ul style="font-size: 30px">
                 <li>I missed the manager to keep the storyline, so I decided to... <br/><a href="http://phaser.io/shop/books">buy a couple of books</a> about <a href="http://phaser.io">Phaser.js</a></li>
             </ul>
         </div>
