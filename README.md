@@ -1,6 +1,6 @@
-# WarsawJS Presentation: My 10 days with Phaser.js
+# WarsawJS Slides: My 10 days with Phaser.js
 
-Link: http://piecioshka.github.io/warsawjs-presentation-my-10-days-with-phaser-js/
+Link: http://piecioshka.github.io/warsawjs-slides-my-10-days-with-phaser-js/
 
 ![Logo](/pictures/logo/logo-light.png)
 
