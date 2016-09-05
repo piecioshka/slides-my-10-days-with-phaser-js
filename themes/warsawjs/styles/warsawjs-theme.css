@@ -98,17 +98,17 @@
     border-color: transparent transparent #f7302f;
 }
 
-.badge-left {
+.badge.fullscreen {
     left: 0;
 }
 
-.badge-left a {
+.badge.fullscreen a {
     background: #f7302f;
     -webkit-transform: rotate(315deg) translateY(-1em);
     -ms-transform: rotate(315deg) translateY(-1em);
     transform: rotate(315deg) translateY(-1em);
 }
 
-.badge-left a:hover {
+.badge.fullscreen a:hover {
     background: #f0db4f;
 }
